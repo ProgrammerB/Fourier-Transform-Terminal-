@@ -12,5 +12,7 @@ using namespace std;
 
 int main(void) {
 
+  cout << "Hello Fourier Transform program!" << endl;
+
   return 0;
 }
