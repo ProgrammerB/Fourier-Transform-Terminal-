@@ -7,12 +7,14 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 */
 
 #include <iostream>
+#include <string>
+#include <vector>
 
 using namespace std;
 
-int main(void) {
+int main(int argc, char **argv) {
 
-  cout << "Hello Fourier Transform program!" << endl;
+
 
   return 0;
 }
