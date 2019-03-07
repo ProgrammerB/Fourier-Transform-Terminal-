@@ -1,7 +1,9 @@
 Applies a Fourier Transform Algorithm to a text file and outputs a corresponding file
 
-Example Use
+Format
 FOURIER.exe [Algorithm] [Frequency] [Frequency Step]
+
+Example
 FOURIER.exe brute_force 213.2 3
 
 Options

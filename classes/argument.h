@@ -14,6 +14,7 @@ void parseParam(int argc, char* argv[]);
 
 void helpMenu(void);
 void listMenu(void);
+void runUniqueParam(std::string parameter);
 void printFile(std::ifstream& file);
 
 #endif
