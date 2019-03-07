@@ -9,12 +9,21 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 #include <iostream>
 #include <string>
 #include <vector>
+#include "argument.h"
 
 using namespace std;
 
-int main(int argc, char **argv) {
+void programStart(int argc, char* argv[])
+{
+  if(checkNumParam(argc))
+  {
+    parseParam(argc, argv);
+  }
+}
 
-
+int main(int argc, char* argv[])
+{
+  programStart(argc, argv);
 
   return 0;
 }
