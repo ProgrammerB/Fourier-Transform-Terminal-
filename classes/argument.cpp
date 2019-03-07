@@ -18,8 +18,8 @@ const int MIN_ARGS          = 2; // Minimum args needed to access the program
 const std::string HELP      = "-help"; // String literal for the '-help' option
 const std::string LIST      = "-list"; // String literal for the '-list' option
 const std::string TEXT_DIRECTORY = "text_files\\"; // Directory for text files
-const std::string HELP_MENU = TEXT_DIRECTORY + "helpMenu.txt";
-const std::string LIST_MENU = TEXT_DIRECTORY + "listMenu.txt";
+const std::string HELP_PATH = TEXT_DIRECTORY + "helpMenu.txt";
+const std::string LIST_PATH = TEXT_DIRECTORY + "listMenu.txt";
 
 /*Checks for the amount of command-line parameters entered and throws an
   exception if there aren't enough to run the program correctly
@@ -72,37 +72,22 @@ void runUniqueParam(std::string parameter)
 {
   if(parameter == HELP)
   {
-    helpMenu();
+    printFile(HELP_PATH);
   }
   else if(parameter == LIST)
   {
-    listMenu();
+    printFile(LIST_PATH);
   }
-}
-
-
-/*Loads the helpMenu.txt file and prints it to the console  */
-void helpMenu(void)
-{
-  std::ifstream help_file(HELP_MENU);
-  printFile(help_file);
-}
-
-
-/*Loads the listMenu.txt file and prints it to the console  */
-void listMenu(void)
-{
-  std::ifstream menu_file(LIST_MENU);
-  printFile(menu_file);
 }
 
 
 /*Receives an ifstream object and prints its contents
   @param file - text file to print
   @example  - printFile(file) @output: "Hello World\n"  */
-void printFile(std::ifstream& file)
+void printFile(std::string file_path)
 {
   std::string line;
+  std::ifstream file(file_path);
 
   if (file.is_open())
   {
