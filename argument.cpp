@@ -10,10 +10,15 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 #include <fstream>
 #include <exception>
 #include <string>
+#include <vector>
 #include "argument.h"
 
-const int MIN_ARG = 5; // Minimum amount of arguments for program to run
-const std::string HELP = "-help"; // String literal for the '-help' option
+const int MIN_ARG       = 5; // Minimum amount of arguments for program to run
+const std::string HELP  = "-help"; // String literal for the '-help' option
+const std::string LIST  = "-list"; // String literal for the '-list' option
+const std::string TEXT_DIRECTORY = "text_files\\";
+const std::string HELP_MENU = TEXT_DIRECTORY + "helpMenu.txt";
+const std::string LIST_MENU = TEXT_DIRECTORY + "listMenu.txt";
 
 /*Checks for the amount of command-line parameters entered and throws an
   exception if there aren't enough to run the program correctly
@@ -44,9 +49,19 @@ void parseParam(int argc, char* argv[])
 {
   try
   {
-    if(argc == 2 && argv[1] == HELP)
+    for(int i = 1; i < argc; i++)
     {
-      helpMenu();
+      if(argc == 2)
+      {
+        if(argv[i] == HELP)
+        {
+          helpMenu();
+        }
+        else if(argv[i] == LIST)
+        {
+          listMenu();
+        }
+      }
     }
   }
   catch(std::runtime_error& exception)
@@ -56,17 +71,33 @@ void parseParam(int argc, char* argv[])
 }
 
 
+/*Loads the helpMenu.txt file and prints it to the console  */
 void helpMenu(void)
 {
-  std::string line;
-  std::ifstream help_file("helpMenu.txt");
+  std::ifstream help_file(HELP_MENU);
 
-  if (help_file.is_open())
+  printFile(help_file);
+}
+
+
+void listMenu(void)
+{
+  std::ifstream menu_file(LIST_MENU);
+  printFile(menu_file);
+}
+
+
+/*Loads the listMenu.txt file and prints it to the console  */
+void printFile(std::ifstream& file)
+{
+  std::string line;
+
+  if (file.is_open())
   {
-    while (std::getline(help_file,line))
+    while (std::getline(file,line))
     {
       std::cout << line << std::endl;
     }
-    help_file.close();
+    file.close();
   }
 }

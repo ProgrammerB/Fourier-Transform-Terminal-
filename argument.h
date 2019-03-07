@@ -11,6 +11,9 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 
 bool checkNumParam(int argc);
 void parseParam(int argc, char* argv[]);
+
 void helpMenu(void);
+void listMenu(void);
+void printFile(std::ifstream& file);
 
 #endif
