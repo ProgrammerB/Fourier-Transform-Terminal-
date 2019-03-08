@@ -1,7 +1,7 @@
 Applies a Fourier Transform Algorithm to a text file and outputs a corresponding file
 
 Format
-FOURIER.exe [Algorithm] [Frequency] [Frequency Step]
+FOURIER.exe [File Name] [Algorithm] [Frequency] [Frequency Step]
 
 Example
 FOURIER.exe brute_force 213.2 3
@@ -9,6 +9,8 @@ FOURIER.exe brute_force 213.2 3
 Options
 FOURIER.exe [-help][-list]
 
+    File Name           Name of the file that had the data to apply
+                        the fourier algorithm to
     Algorithm           Which Fourier algorithm to use
     Frequency           Frequency to calculate the transform for
     Frequency Step      The spacing between each frequency
