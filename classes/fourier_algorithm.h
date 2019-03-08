@@ -20,7 +20,6 @@ class Fourier
 
     double getFrequency(void)     const;
     double getFrequencyStep(void) const;
-
   protected:
     double* frequency;
     double* frequency_step;
