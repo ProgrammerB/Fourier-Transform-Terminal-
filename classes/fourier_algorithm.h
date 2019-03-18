@@ -9,6 +9,9 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 #ifndef FOURIER_ALGORITHM_H
 #define FOURIER_ALGORITHM_H
 
+#include <string>
+#include <vector>
+
 class Fourier
 {
   public:
