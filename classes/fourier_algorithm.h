@@ -20,9 +20,13 @@ class Fourier
 
     double getFrequency(void)     const;
     double getFrequencyStep(void) const;
+
+    void parseFile(std::string file_path, std::vector<double>& index, std::vector<double>& value);
   protected:
     double* frequency;
     double* frequency_step;
+    std::vector<double> index;
+    std::vector<double> value;
 };
 
 #endif
