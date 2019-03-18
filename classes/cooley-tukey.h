@@ -11,7 +11,7 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 
 #include "fourier_algorithm.h"
 
-class Cooley_Tukey: protected Fourier {
+class Cooley_tukey: protected Fourier {
 
 };
 

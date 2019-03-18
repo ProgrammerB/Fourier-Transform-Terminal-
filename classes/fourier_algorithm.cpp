@@ -8,6 +8,7 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 
 #include "Fourier.h"
 #include "cooley-tukey.h"
+#include <vector>
 
 
 /*Default constructor assigned memory to frequency and frequency_step then
@@ -18,6 +19,8 @@ Fourier::Fourier(double frequency, double frequency_step)
 {
   frequency             = new double;
   frequency_step        = new double;
+  index                 = new std::vector<double>;
+  value                 = new std::vector<double>;
 
   this->frequency       = frequency;
   this->frequency_step  = frequency_step;
@@ -30,9 +33,13 @@ Fourier::~Fourier(void)
 {
   delete frequency;
   delete frequency_step;
+  delete index;
+  delete value;
 
   frequency       = nullptr;
   frequency_step  = nullptr;
+  index           = nullptr;
+  value           = nullptr;
 }
 
 

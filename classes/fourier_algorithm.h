@@ -17,6 +17,7 @@ class Fourier
   public:
     Fourier(double frequency, double frequency_step);
     ~Fourier(void);
+    //TODO: Add copy constructor
 
     void setFrequency(double frequency);
     void setFrequencyStep(double frequency_step);
@@ -25,11 +26,12 @@ class Fourier
     double getFrequencyStep(void) const;
 
     void parseFile(std::string file_path, std::vector<double>& index, std::vector<double>& value);
+
   protected:
     double* frequency;
     double* frequency_step;
-    std::vector<double> index;
-    std::vector<double> value;
+    std::vector<double>* index;
+    std::vector<double>* value;
 };
 
 #endif
