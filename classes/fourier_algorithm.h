@@ -16,7 +16,7 @@ class Fourier
 {
   public:
     Fourier(double frequency, double frequency_step);
-    ~Fourier(void);
+    virtual ~Fourier(void) = 0;
     //TODO: Add copy constructor
 
     void setFrequency(double frequency);

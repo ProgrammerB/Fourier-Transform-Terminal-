@@ -29,7 +29,7 @@ Fourier::Fourier(double frequency, double frequency_step)
 
 /*Default constructor, deallocates memory to frequency and frequency_step then
   assigns them to a nullptr value */
-Fourier::~Fourier(void)
+virtual Fourier::~Fourier(void)
 {
   delete frequency;
   delete frequency_step;
