@@ -3,3 +3,5 @@ https://betterexplained.com/articles/an-interactive-guide-to-the-fourier-transfo
 https://www.youtube.com/watch?v=ykNtIbtCR-8
 
 https://www.youtube.com/watch?v=XtypWS8HZco
+
+http://lpsa.swarthmore.edu/Fourier/Xforms/FXformIntro.html
