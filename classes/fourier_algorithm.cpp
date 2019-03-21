@@ -7,6 +7,8 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 */
 
 #include "Fourier.h"
+#include "cooley-tukey.h"
+#include <vector>
 
 
 /*Default constructor assigned memory to frequency and frequency_step then
@@ -17,6 +19,8 @@ Fourier::Fourier(double frequency, double frequency_step)
 {
   frequency             = new double;
   frequency_step        = new double;
+  index                 = new std::vector<double>;
+  value                 = new std::vector<double>;
 
   this->frequency       = frequency;
   this->frequency_step  = frequency_step;
@@ -25,13 +29,17 @@ Fourier::Fourier(double frequency, double frequency_step)
 
 /*Default constructor, deallocates memory to frequency and frequency_step then
   assigns them to a nullptr value */
-Fourier::~Fourier(void)
+virtual Fourier::~Fourier(void)
 {
   delete frequency;
   delete frequency_step;
+  delete index;
+  delete value;
 
   frequency       = nullptr;
   frequency_step  = nullptr;
+  index           = nullptr;
+  value           = nullptr;
 }
 
 
@@ -64,4 +72,23 @@ double Fourier::getFrequency(void) const
 double Fourier::getFrequencyStep(void) const
 {
   return this->frequency_step;
+}
+
+
+/*Takes a given txt file and parses it assuming there are 2 columns.  It stores
+  the 2 different columns in 2 different vectors that are referenced in the call
+  @file_path - string of the file name/location
+  @index - vector reference for storing the 1st column in txt file
+  @value - vector reference for storing the 2nd column in txt file  */
+void Fourier::parseFile(std::string file_path, std::vector<double>& index, std::vector<double>& value)
+{
+  double time = 0.0;
+  double temperature = 0.0;
+  std::ifstream file(file_path);
+
+  while(file >> time >> temperature)
+  {
+    index.push_back(time);
+    value.push_back(temperature);
+  }
 }
