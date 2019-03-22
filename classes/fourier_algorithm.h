@@ -11,6 +11,10 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 
 #include <string>
 #include <vector>
+#include <complex>
+
+//TODO: make a complex classes
+//
 
 class Fourier
 {
