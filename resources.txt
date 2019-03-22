@@ -7,3 +7,9 @@ https://www.youtube.com/watch?v=XtypWS8HZco
 http://lpsa.swarthmore.edu/Fourier/Xforms/FXformIntro.html
 
 https://www.youtube.com/watch?v=mkGsMWi_j4Q
+
+https://rstudio-pubs-static.s3.amazonaws.com/64168_1c5f1587d2774a14b4acc5be038d7d8c.html
+
+https://people.eecs.ku.edu/~perrins/class/F14_360/lab/labnotes9.pdf
+
+https://www.sp4comm.org/webversion/livre.html
