@@ -17,8 +17,8 @@ void Brute_Force::DFT(const std::vector<double> &index, const std::vector<double
     for (size_t time = 0; time < index.size(); time++) {  // For each input element
       double angle = 2 * M_PI * time * frequency / index.size();
       //TODO: change inreal and inimag to class Complex vector
-      value = complex(sumreal + inreal[t] * cos(angle) + inimag[t] * sin(angle), 0);
-      value = complex(0, -inreal[t] * sin(angle) + inimag[t] * cos(angle));
+      value.real(sumreal + inreal[t] * cos(angle) + inimag[t] * sin(angle));
+      value.imag(-inreal[t] * sin(angle) + inimag[t] * cos(angle));
 
     }
     //outreal[k] = sumreal;
