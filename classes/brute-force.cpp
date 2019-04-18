@@ -1,18 +1,35 @@
 #include "brute-force.h"
+#include <complex>
+#include <vector>
+#include <algorithm>
+#include <array>
+#include <cstdint>
+using complex = std::complex<double>;
 
-void Brute_Force::DFT(const vector<double> &index, const vector<double> &value) {
+void Brute_Force::DFT(const std::vector<double> &index, const std::vector<double> &value) {
 
-  size_t n = inreal.size();
-  for (size_t k = 0; k < n; k++) {  // For each output element
-    double sumreal = 0;
-    double sumimag = 0;
-    for (size_t t = 0; t < n; t++) {  // For each input element
-      double angle = 2 * M_PI * t * k / n;
+  std::vector<complex> value(index.size());
+
+  for (size_t frequency = 0; frequency < index.size(); frequency++) {  // For each output element
+    complex temp = 0;
+    temp = (1 / index.end());
+
+    for (size_t time = 0; time < index.size(); time++) {  // For each input element
+      double angle = 2 * M_PI * time * frequency / index.size();
       //TODO: change inreal and inimag to class Complex vector
-      sumreal +=  inreal[t] * cos(angle) + inimag[t] * sin(angle);
-      sumimag += -inreal[t] * sin(angle) + inimag[t] * cos(angle);
+      //sumreal = sumreal + inreal[t] * cos(angle) + inimag[t] * sin(angle);
+      //sumimag = sumimag +  -inreal[t] * sin(angle) + inimag[t] * cos(angle);
+      temp = temp *
+
     }
-    outreal[k] = sumreal;
-    outimag[k] = sumimag;
+    //outreal[k] = sumreal;
+    //outimag[k] = sumimag;
+    value.at(frequency) = temp;
   }
+}
+
+
+for (int elements = 0; elements < index.size(); elements++)
+{
+    value = std::exp(std::complex(0, ))
 }

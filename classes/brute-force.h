@@ -3,13 +3,11 @@
 #include "fourier_algorithm.h"
 #include <cmath>
 #include <vector>
-using std::size_t;
-using std::vector;
 
 //TODO:: implement print file from fourier abstract classes
 class Brute_Force: protected Fourier {
 public:
-  void DFT(const vector<double> &index, const vector<double> &value);
+  void DFT(const std::vector<double> &index, const std::vector<double> &value);
 
 private:
   double* frequency;
@@ -18,4 +16,5 @@ private:
   std::vector<double>* index;
   std::vector<double>* value;
 };
+
 #endif BRUTEFORCE_H

@@ -84,7 +84,8 @@ void runUniqueParam(std::string parameter)
 /*Receives an ifstream object and prints its contents
   @param file - text file to print
   @example  - printFile(file) @output: "Hello World\n"  */
-void printFile(std::string file_path)
+/*
+void printFile(std::string file_path, std::vector)
 {
   std::string line;
   std::ifstream file(file_path);
@@ -96,5 +97,19 @@ void printFile(std::string file_path)
       std::cout << line << std::endl;
     }
     file.close();
+  }
+}
+*/
+
+void parseFile(std::string file_path, std::vector<complex>& index, std::vector<complex>& value)
+{
+  double time = 0.0;
+  double temperature = 0.0;
+  std::ifstream file(file_path);
+
+  while(file >> time >> temperature)
+  {
+    index.push_back(time);
+    value.push_back(temperature);
   }
 }
