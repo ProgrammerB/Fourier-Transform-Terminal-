@@ -80,6 +80,8 @@ double Fourier::getFrequencyStep(void) const
   @file_path - string of the file name/location
   @index - vector reference for storing the 1st column in txt file
   @value - vector reference for storing the 2nd column in txt file  */
+
+//TODO:Change to implement use of complex vector
 void Fourier::parseFile(std::string file_path, std::vector<double>& index, std::vector<double>& value)
 {
   double time = 0.0;

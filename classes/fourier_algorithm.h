@@ -18,6 +18,7 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 #include <algorithm>
 #include <chrono>
 #include <fstream>
+using std::complex;
 
 //TODO: make a complex classes
 //TODO: make it so complex vector can be used in derived classes
@@ -41,11 +42,9 @@ class Fourier
     //TODO: make class or struct for complex (complex object or structure)
       //@ vector<complex>
   protected:
-    double* frequency;
-    double* frequency_step;
-    //TODO: vector<complex> index/time
-    //TODO: vector<complex> value/temperature
-
+    double frequency;
+    double frequency_step;
+    std::vector<complex<double>> result;
     std::vector<double>* index;
     std::vector<double>* value;
 };
