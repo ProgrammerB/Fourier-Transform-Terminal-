@@ -5,7 +5,7 @@
 #include <vector>
 #include <complex>
 using std::complex;
-
+//TODO: change class and function name
 //TODO:: implement print file from fourier abstract classes
 class Brute_Force: protected Fourier {
 public:
@@ -15,7 +15,6 @@ public:
 private:
   double frequency;
   double frequency_step;
-  //TODO: change to complex vectors
   std::vector<std::complex<double>> result;
   std::vector<double>* index;
   std::vector<double>* value;
