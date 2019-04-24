@@ -101,7 +101,7 @@ void printFile(std::string file_path, std::vector)
 }
 */
 
-void parseFile(std::string file_path, std::vector<complex>& index, std::vector<complex>& value)
+void parseFile(std::string file_path, std::vector<double>& index, std::vector<double>& value)
 {
   double time = 0.0;
   double temperature = 0.0;
