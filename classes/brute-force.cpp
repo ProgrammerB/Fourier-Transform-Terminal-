@@ -8,10 +8,11 @@ using std::complex;  //same as using complex
 using std::exp;
 //using complex = std::complex<double>;
 
-Brute_Force::~Brute_Force()
+template<typename T>
+Brute_Force<T>::~Brute_Force()
 {
-  delete index;
-  delete value;
+  delete [] index;
+  delete [] value;
   index = nullptr;
   value = nullptr;
 }

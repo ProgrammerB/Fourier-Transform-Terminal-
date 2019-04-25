@@ -49,6 +49,8 @@ class Fourier
     std::vector<complex<T>> result;
     std::vector<T>* index;
     std::vector<T>* value;
+    std::string file_name;
+    std::string output_name;
 };
 
 #endif

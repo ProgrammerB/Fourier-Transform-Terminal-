@@ -13,6 +13,7 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 template<typename T>
 class Cooley_tukey: protected Fourier<T> {
 public:
+  Cooley_tukey(T frequency, T frequency_step)
   ~Cooley_tukey();
 
   void FFT(const std::vector<double> &index, const std::vector<double> &value);
