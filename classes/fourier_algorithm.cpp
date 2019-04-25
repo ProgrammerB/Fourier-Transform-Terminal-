@@ -106,10 +106,10 @@ void Fourier<T>::parseFile(std::string file_path, std::vector<double>& index, st
 
 
 template<typename T>
-void Fourier<T>::outputFile(std::vector<complex<double>> result)
+void Fourier<T>::outputFile(std::vector<complex<double>> result, std::string file_name = "result.txt")
 {
   std::ofstream file;
-  file.open("result.txt");
+  file.open(file_name);
 
   if (file.open())
   {

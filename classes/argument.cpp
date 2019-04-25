@@ -17,6 +17,8 @@ const int REQUIRED_ARGS     = 5; // Args needed for the program fully run
 const int MIN_ARGS          = 2; // Minimum args needed to access the program
 const std::string HELP      = "-help"; // String literal for the '-help' option
 const std::string LIST      = "-list"; // String literal for the '-list' option
+const std::string COOLEY    = "cooley_tukey"; // String literal for the 'cooley_tukey' algorithm option
+const std::string BRUTE     = "brute_force"; // String literal for 'brute_force' algorithm option
 const std::string TEXT_DIRECTORY = "text_files\\"; // Directory for text files
 const std::string HELP_PATH = TEXT_DIRECTORY + "helpMenu.txt";
 const std::string LIST_PATH = TEXT_DIRECTORY + "listMenu.txt";
@@ -55,6 +57,10 @@ void parseParam(int argc, char* argv[])
       if(argc == MIN_ARGS)
       {
         runUniqueParam(argv[current_arg]);
+      }
+      else if (arg == REQUIRED_ARGS)
+      {
+        
       }
     }
   }

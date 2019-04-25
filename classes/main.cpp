@@ -15,6 +15,7 @@ using namespace std;
 
 void programStart(int argc, char* argv[])
 {
+  
   if(checkNumParam(argc))
   {
     parseParam(argc, argv);
