@@ -27,7 +27,7 @@ template<typename T>
 class Fourier
 {
   public:
-    Fourier(double frequency, double frequency_step);
+    Fourier(T frequency, T frequency_step, std::string );
     virtual ~Fourier(void) = 0;
     //TODO: Add copy constructor
 
