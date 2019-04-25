@@ -11,6 +11,7 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 #include <exception>
 #include <string>
 #include <vector>
+#include <typeinfo>
 #include "argument.h"
 
 const int REQUIRED_ARGS     = 5; // Args needed for the program fully run
