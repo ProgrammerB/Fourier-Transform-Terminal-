@@ -24,6 +24,8 @@ const std::string TEXT_DIRECTORY = "text_files\\"; // Directory for text files
 const std::string HELP_PATH = TEXT_DIRECTORY + "helpMenu.txt";
 const std::string LIST_PATH = TEXT_DIRECTORY + "listMenu.txt";
 
+void runParam(std::string parameter, int arg_num, char* argv[]);
+
 /*Checks for the amount of command-line parameters entered and throws an
   exception if there aren't enough to run the program correctly
   @param argc - Num of command-line parameters caught by main() */
@@ -59,7 +61,7 @@ void parseParam(int argc, char* argv[])
       {
         runUniqueParam(argv[current_arg]);
       }
-      else if (arg == REQUIRED_ARGS)
+      else if (argc == REQUIRED_ARGS)
       {
         runParam(argv[current_arg], current_arg, argv[]);
       }
@@ -78,11 +80,11 @@ void runParam(std::string parameter, int arg_num, char* argv[])
   {
     if (parameter == BRUTE)
     {
-      Brute_force<typeid(argv[4]).name()> brute_obj;
+      //Brute_force<typeid(argv[4]).name()> brute_obj;
     }
     else if (parameter == COOLEY)
     {
-      Cooley_tukey<typeid(argv[4]).name()> cooley_obj;
+      //Cooley_tukey<typeid(argv[4]).name()> cooley_obj;
     }
   }
 }

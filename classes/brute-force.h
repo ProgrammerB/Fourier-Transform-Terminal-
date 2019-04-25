@@ -12,13 +12,6 @@ class Brute_Force: protected Fourier<T> {
 public:
   std::vector<complex<double>> DFT(const std::vector<double> &index,
     const std::vector<double> &value,std::vector<complex<double>> &result);
-
-private:
-  double frequency;
-  double frequency_step;
-  std::vector<std::complex<double>> result;
-  std::vector<double>* index;
-  std::vector<double>* value;
 };
 
 #endif
