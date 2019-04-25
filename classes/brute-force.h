@@ -10,8 +10,15 @@ using std::complex;
 template<typename T>
 class Brute_Force: protected Fourier<T> {
 public:
+  ~Brute_Force();
   std::vector<complex<double>> DFT(const std::vector<double> &index,
     const std::vector<double> &value,std::vector<complex<double>> &result);
 };
+Brute_Force::~Brute_Force() {
+  delete [] index;
+  delete [] value;
+  index = nullptr;
+  value = nullptr;
+}
 
 #endif
