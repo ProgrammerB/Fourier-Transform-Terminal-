@@ -4,7 +4,7 @@ Format
 FOURIER.exe [File Name] [Algorithm] [Frequency] [Frequency Step] [Output File]
 
 Example
-FOURIER.exe brute_force 213.2 3 weather.txt
+FOURIER.exe file.txt brute_force 213.2 3 weather.txt
 
 Options
 FOURIER.exe [-help][-list]

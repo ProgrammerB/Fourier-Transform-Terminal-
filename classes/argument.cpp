@@ -60,13 +60,29 @@ void parseParam(int argc, char* argv[])
       }
       else if (arg == REQUIRED_ARGS)
       {
-        
+        runParam(argv[current_arg], current_arg, argv[]);
       }
     }
   }
   catch(std::runtime_error& exception)
   {
     std::cerr << "ERROR: Issue parsing inputted paramters" << std::endl;
+  }
+}
+
+
+void runParam(std::string parameter, int arg_num, char* argv[])
+{
+  if (arg_num == 2)
+  {
+    if (parameter == BRUTE)
+    {
+      Brute_force<typeid(argv[4]).name()> brute_obj;
+    }
+    else if (parameter == COOLEY)
+    {
+      Cooley_tukey<typeid(argv[4]).name()> cooley_obj;
+    }
   }
 }
 
