@@ -36,8 +36,8 @@ void Cooley_tukey<T>::FFT_REC(std::vector<complex<double>> &x, int total_time) {
 	complex<double> odd[total_time/2];
 	complex<double> even[total_time/2];
 	for (int i = 0; i < total_time / 2; i++) {
-		even[i] = x[i*2];
-		odd[i] = x[i*2+1];
+		even[i] = temp[i*2];
+		odd[i] = temp[i*2+1];
 	}
 
 	// Split on tasks
