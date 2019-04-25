@@ -23,6 +23,7 @@ using std::complex;
 //TODO: make a complex classes
 //TODO: make it so complex vector can be used in derived classes
 
+template<typename T>
 class Fourier
 {
   public:
@@ -37,6 +38,7 @@ class Fourier
     double getFrequencyStep(void) const;
 
     void parseFile(std::string file_path, std::vector<double>& index, std::vector<double>& value);
+    void outputFile(std::vector<complex<double>> result);
     //TODO: print real and imaginary variables
     //TODO: for loop to assign user input file to vector
     //TODO: make class or struct for complex (complex object or structure)

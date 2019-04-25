@@ -15,7 +15,8 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
   sets that equal to the given parameters.
   @param frequency - frequency applied to the fourier algorithm
   @param frequency_step - frequency step applied to the fourier algorithm */
-Fourier::Fourier(double frequency, double frequency_step)
+template<typename T>
+Fourier<T>::Fourier(double frequency, double frequency_step)
 {
   frequency             = new double;
   frequency_step        = new double;
@@ -29,7 +30,8 @@ Fourier::Fourier(double frequency, double frequency_step)
 
 /*Default constructor, deallocates memory to frequency and frequency_step then
   assigns them to a nullptr value */
-virtual Fourier::~Fourier(void)
+template<typename T>
+virtual Fourier<T>::~Fourier(void)
 {
   delete frequency;
   delete frequency_step;
@@ -45,7 +47,8 @@ virtual Fourier::~Fourier(void)
 
 /*Sets frequency equal to the given input
   @param frequency - double val to assign frequency*/
-void Fourier::setFrequency(double frequency)
+template<typename T>
+void Fourier<T>::setFrequency(double frequency)
 {
   this->frequency = frequency;
 }
@@ -53,7 +56,8 @@ void Fourier::setFrequency(double frequency)
 
 /*Sets frequency_step equal to the given input
   @param frequency_step - double val to assign frequency_step*/
-void Fourier::setFrequencyStep(double frequency_step)
+template<typename T>
+void Fourier<T>::setFrequencyStep(double frequency_step)
 {
   this->frequency_step = frequency_step;
 }
@@ -61,7 +65,8 @@ void Fourier::setFrequencyStep(double frequency_step)
 
 /*Returns the frequency variable
   @return - objects local frequency ptr value*/
-double Fourier::getFrequency(void) const
+template<typename T>
+double Fourier<T>::getFrequency(void) const
 {
   return this->frequency;
 }
@@ -69,7 +74,8 @@ double Fourier::getFrequency(void) const
 
 /*Returns the frequency_step variable
   @return - objects local frequency_step ptr value*/
-double Fourier::getFrequencyStep(void) const
+template<typename T>
+double Fourier<T>::getFrequencyStep(void) const
 {
   return this->frequency_step;
 }
@@ -82,7 +88,8 @@ double Fourier::getFrequencyStep(void) const
   @value - vector reference for storing the 2nd column in txt file  */
 
 //TODO:Change to implement use of complex vector
-void Fourier::parseFile(std::string file_path, std::vector<double>& index, std::vector<double>& value)
+template<typename T>
+void Fourier<T>::parseFile(std::string file_path, std::vector<double>& index, std::vector<double>& value)
 {
   double time = 0.0;
   double temperature = 0.0;
@@ -93,4 +100,21 @@ void Fourier::parseFile(std::string file_path, std::vector<double>& index, std::
     index.push_back(time);
     value.push_back(temperature);
   }
+
+  file.close();
+}
+
+
+template<typename T>
+void Fourier<T>::outputFile(std::vector<complex<double>> result)
+{
+  std::ofstream file;
+  file.open("result.txt");
+
+  if (file.open())
+  {
+    while (file << result);
+  }
+
+  file.close();
 }

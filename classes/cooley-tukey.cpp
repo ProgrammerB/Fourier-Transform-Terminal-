@@ -9,9 +9,8 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 #include "Cooley-tukey.h"
 #include "fourier_algorithm.h"
 
-void FFT_REC(complex<double> *x, int N);
-
-void FFT(int *x_in, std::complex<double> *x_out, int N) {
+template<typename T>
+void Cooley_tukey<T>::FFT(int *x_in, std::complex<double> *x_out, int N) {
 
 	// Make copy of array and apply window
 	for (int i = 0; i < N; i++) {
@@ -23,7 +22,8 @@ void FFT(int *x_in, std::complex<double> *x_out, int N) {
 	FFT_REC(x_out, N);
 }
 
-void FFT_REC(complex<double> *x, int N) {
+template<typename T>
+void Cooley_tukey<T>::FFT_REC(complex<double> *x, int N) {
 	// Check if it is splitted enough
 	if (N <= 1) {
 		return;

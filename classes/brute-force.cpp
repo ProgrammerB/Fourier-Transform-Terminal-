@@ -9,7 +9,8 @@ using std::exp;
 //using complex = std::complex<double>;
 
 //TODO: change parameter to vector<complex<double>>
-std::vector<complex<double>> Brute_Force::DFT(const std::vector<double> &index,
+template<typename T>
+std::vector<complex<double>> Brute_Force<T>::DFT(const std::vector<double> &index,
    const std::vector<double> &value, std::vector<complex<double>> &result) {
 //  std::vector<complex<double>> value(index.size());
   //Changing real and imaginary parameters

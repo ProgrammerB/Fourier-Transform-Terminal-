@@ -7,7 +7,8 @@
 using std::complex;
 //TODO: change class and function name
 //TODO:: implement print file from fourier abstract classes
-class Brute_Force: protected Fourier {
+template<typename T>
+class Brute_Force: protected Fourier<T> {
 public:
   std::vector<complex<double>> DFT(const std::vector<double> &index,
     const std::vector<double> &value,std::vector<complex<double>> &result);

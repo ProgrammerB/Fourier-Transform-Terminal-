@@ -10,7 +10,8 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 #define COOLEY_TUKEY_H
 #include "fourier_algorithm.h"
 
-class Cooley_tukey: protected Fourier {
+template<typename T>
+class Cooley_tukey: protected Fourier<T> {
 public:
   void FFT(int *x_in, complex<double> *x_out, int N);
   void FFT_REC(complex<double> *x, int N); //recursion function for FFT
