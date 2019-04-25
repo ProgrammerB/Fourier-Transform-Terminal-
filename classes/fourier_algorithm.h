@@ -46,7 +46,7 @@ class Fourier
   protected:
     double frequency;
     double frequency_step;
-    std::vector<complex<double>> result;
+    std::vector<complex<T>> result;
     std::vector<T>* index;
     std::vector<T>* value;
 };
