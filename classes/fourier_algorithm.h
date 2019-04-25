@@ -47,8 +47,8 @@ class Fourier
     double frequency;
     double frequency_step;
     std::vector<complex<double>> result;
-    std::vector<double>* index;
-    std::vector<double>* value;
+    std::vector<T>* index;
+    std::vector<T>* value;
 };
 
 #endif
