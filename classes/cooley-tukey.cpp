@@ -9,6 +9,8 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 #include "Cooley-tukey.h"
 #include "fourier_algorithm.h"
 
+void FFT_REC(complex<double> *x, int N);
+
 void FFT(int *x_in, std::complex<double> *x_out, int N) {
 
 	// Make copy of array and apply window
