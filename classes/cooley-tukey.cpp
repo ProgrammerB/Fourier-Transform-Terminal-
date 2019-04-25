@@ -9,6 +9,18 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 #include "Cooley-tukey.h"
 #include "fourier_algorithm.h"
 
+
+template<typename T>
+Cooley_tukey<T>::~Cooley_tukey()
+{
+	delete index;
+	delete value;
+
+	index = nullptr;
+	value = nullptr;
+}
+
+
 template<typename T>
 void Cooley_tukey<T>::FFT(const std::vector<double> &index, const std::vector<double> &value) {
 

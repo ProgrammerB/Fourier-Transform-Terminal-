@@ -13,16 +13,11 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 template<typename T>
 class Cooley_tukey: protected Fourier<T> {
 public:
+  ~Cooley_tukey();
+
   void FFT(const std::vector<double> &index, const std::vector<double> &value);
   void FFT_REC(std::vector<complex<double>> &x, int total_time); //recursion function for FFT
   double total_time;
-
-private:
-  double frequency;
-  double frequency_step;
-  std::vector<std::complex<double>> result;
-  std::vector<double>* index;
-  std::vector<double>* value;
 };
 
 

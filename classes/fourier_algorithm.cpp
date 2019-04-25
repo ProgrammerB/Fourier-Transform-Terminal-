@@ -18,10 +18,10 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 template<typename T>
 Fourier<T>::Fourier(double frequency, double frequency_step)
 {
-  frequency             = new double;
-  frequency_step        = new double;
-  index                 = new std::vector<double>;
-  value                 = new std::vector<double>;
+  frequency             = new T;
+  frequency_step        = new T;
+  index                 = new std::vector<T>;
+  value                 = new std::vector<T>;
 
   this->frequency       = frequency;
   this->frequency_step  = frequency_step;
