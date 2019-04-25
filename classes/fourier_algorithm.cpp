@@ -20,8 +20,8 @@ Fourier<T>::Fourier(T frequency, T frequency_step)
 {
   frequency             = new T;
   frequency_step        = new T;
-  index                 = new std::vector<T>;
-  value                 = new std::vector<T>;
+  index                 = new std::vector<complex<T>>;
+  value                 = new std::vector<complex<T>>;
 
   this->frequency       = frequency;
   this->frequency_step  = frequency_step;
