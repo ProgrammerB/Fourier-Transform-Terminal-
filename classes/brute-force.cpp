@@ -11,8 +11,8 @@ using std::exp;
 template<typename T>
 Brute_Force<T>::~Brute_Force()
 {
-  delete [] index;
-  delete [] value;
+  delete  index;
+  delete  value;
   index = nullptr;
   value = nullptr;
 }

@@ -13,8 +13,8 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 template<typename T>
 Cooley_tukey<T>::~Cooley_tukey()
 {
-	delete [] index;
-	delete [] value;
+	delete  index;
+	delete  value;
 
 	index = nullptr;
 	value = nullptr;
