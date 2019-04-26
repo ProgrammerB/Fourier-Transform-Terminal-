@@ -62,7 +62,7 @@ void parseParam(int argc, char* argv[])
     }
     else if (argc == REQUIRED_ARGS)
     {
-      runParam(argv, argc);
+      runParam(argc, argv);
     }
   }
   catch(std::runtime_error& exception)
@@ -76,7 +76,7 @@ void runParam(int argc, char* argv[])
 {
   if (argv[2] == BRUTE)
   {
-    Brute_Force<double> brute_obj(std::string(argv[1]), std::stod(argv[3]), std::stod(argv[4]), std::string(argv[5]));
+    Brute_force<double> brute_obj(std::string(argv[1]), std::stod(argv[3]), std::stod(argv[4]), std::string(argv[5]));
   }
   else if (argv[1] == COOLEY)
   {
