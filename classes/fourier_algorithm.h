@@ -25,7 +25,7 @@ class Fourier
 {
   public:
     Fourier(double frequency, double frequency_step);
-    virtual ~Fourier(void) = 0; //makes Fourier class our "abstract" Base class
+    virtual ~Fourier(void); //makes Fourier class our "abstract" Base class
 
     void setFrequency    (double frequency);
     void setFrequencyStep(double frequency_step);

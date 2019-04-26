@@ -11,8 +11,8 @@ using std::exp;
 //Brute Force constructor
 template<typename T>
 Brute_force<T>::Brute_force(){
-  index = new std::vector<complex<T>>;
-  value = new std::vector<complex<T>>;
+  this->index = new std::vector<complex<T>>;
+  this->value = new std::vector<complex<T>>;
 }
 
 
@@ -24,10 +24,11 @@ Brute_force<T>::Brute_force(std::string file_name, double frequency, double freq
   this->frequency_step = frequency_step;
   this->output_name = output_name;
 
-  index = new std::vector<complex<T>>;
-  value = new std::vector<complex<T>>;
+  this->index = new std::vector<complex<T>>;
+  this->value = new std::vector<complex<T>>;
 }
 
+/*
 template<typename T>
 Brute_force<T>::~Brute_force()
 {
@@ -37,6 +38,7 @@ Brute_force<T>::~Brute_force()
   index = nullptr;
   value = nullptr;
 }
+*/
 
 template<typename T>
 std::vector<complex<double>> Brute_force<T>::DFT(const std::vector<double> &index,
@@ -45,13 +47,13 @@ std::vector<complex<double>> Brute_force<T>::DFT(const std::vector<double> &inde
   std::vector<complex<double>> temp; //temporary complex<double> vector to be made equal to result
 
   // For each output element
-  for (size_t frequency = 0; frequency < index.size(); frequency += frequency_step)
+  for (size_t freq = 0; freq < index.size(); freq += frequency_step)
   {
     complex<double> sum(0.0, 0.0);
     // For each input element
     for (size_t time = 0; time < index.size(); time++)
     {
-      double angle = 2 * M_PI * time * frequency / index.size();
+      double angle = 2 * M_PI * time * freq / index.size();
       sum = sum + index[time] * exp(-angle);
     }
     temp.push_back(sum);

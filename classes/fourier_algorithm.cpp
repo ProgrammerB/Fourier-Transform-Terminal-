@@ -32,6 +32,17 @@ Fourier<T>::Fourier(double frequency, double frequency_step)
 }
 
 
+template<typename T>
+Fourier<T>::~Fourier()
+{
+  delete [] index;
+  delete [] value;
+
+  index = nullptr;
+  value = nullptr;
+}
+
+
 /*Sets frequency equal to the given input
   @param frequency - double val to assign frequency*/
 template<typename T>
