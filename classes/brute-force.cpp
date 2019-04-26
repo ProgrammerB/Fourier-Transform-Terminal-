@@ -28,19 +28,17 @@ Brute_force<T>::Brute_force(std::string file_name, double frequency, double freq
   this->value = new std::vector<complex<T>>;
 }
 
-
+/*
 template<typename T>
 Brute_force<T>::~Brute_force()
 {
-  /*
   delete [] index;
   delete [] value;
 
   index = nullptr;
   value = nullptr;
-  */
 }
-
+*/
 
 template<typename T>
 std::vector<complex<double>> Brute_force<T>::DFT(const std::vector<double> &index,
@@ -62,3 +60,5 @@ std::vector<complex<double>> Brute_force<T>::DFT(const std::vector<double> &inde
   }
   return temp;
 }
+
+template class Brute_force<double>;

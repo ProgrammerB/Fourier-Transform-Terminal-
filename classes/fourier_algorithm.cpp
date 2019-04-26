@@ -22,10 +22,10 @@ using std::complex;
   @param frequency - frequency applied to the fourier algorithm
   @param frequency_step - frequency step applied to the fourier algorithm */
 template<typename T>
-Fourier<T>::Fourier(double frequency, double frequency_step)
+Fourier<T>::Fourier()
 {
-  index                 = new std::vector<complex<T>>;
-  value                 = new std::vector<complex<T>>;
+  index                 = new std::vector<std::complex<T>>;
+  value                 = new std::vector<std::complex<T>>;
 
   this->frequency       = frequency;
   this->frequency_step  = frequency_step;
@@ -113,3 +113,5 @@ void Fourier<T>::outputFile(std::vector<complex<double>> result, std::string fil
 
   file.close();
 }
+
+template class Fourier<double>;
