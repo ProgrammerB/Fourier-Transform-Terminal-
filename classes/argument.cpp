@@ -63,7 +63,7 @@ void parseParam(int argc, char* argv[])
       }
       else if (argc == REQUIRED_ARGS)
       {
-        runParam(argv[current_arg], current_arg, argv[]);
+        runParam(argv[current_arg], current_arg, argv);
       }
     }
   }
