@@ -6,7 +6,7 @@
 Copyright(c) 2019 Braxton Laster & Ben Rader
 */
 
-#include "Fourier.h"
+#include "fourier_algorithm.h"
 #include "cooley-tukey.h"
 #include <vector>
 
