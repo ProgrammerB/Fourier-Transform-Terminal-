@@ -79,7 +79,7 @@ void runParam(int argc, char* argv[])
   }
   else if (argv[1] == COOLEY)
   {
-    
+    Cooley_tukey<double> cooley_obj(argv[1], argv[3], argv[4], argv[5]);
   }
 }
 

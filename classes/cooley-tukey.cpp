@@ -12,16 +12,6 @@ using std::complex;
 
 
 template<typename T>
-Cooley_tukey<T>::~Cooley_tukey()
-{
-	delete  index;
-	delete  value;
-
-	index = nullptr;
-	value = nullptr;
-}
-
-template<typename T>
 Cooley_tukey<T>::Cooley_tukey()
 {
 	index = new std::vector<complex<T>>;
@@ -31,6 +21,30 @@ Cooley_tukey<T>::Cooley_tukey()
 	output_name = "result.txt";
 	frequency_step = 0;
 	frequency = 0;
+}
+
+
+template<typename T>
+Cooley_tukey<T>::Cooley_tukey(std::string file_name, double frequency, double frequency_step, std::string output_name)
+{
+  this->file_name = file_name;
+  this->frequency = frequency;
+  this->frequency_step = frequency_step;
+  this->output_name = output_name;
+
+  index = new std::vector<complex<T>>;
+  value = new std::vector<complex<T>>;
+}
+
+
+template<typename T>
+Cooley_tukey<T>::~Cooley_tukey()
+{
+	delete  index;
+	delete  value;
+
+	index = nullptr;
+	value = nullptr;
 }
 
 
@@ -49,6 +63,7 @@ std::vector<complex<double>> temp;
 	// Start recursion
 	FFT_REC(temp, total_time);
 }
+
 
 template<typename T>
 std::vector<complex<double>> Cooley_tukey<T>::FFT_REC(std::vector<complex<double>> &temp, int total_time) {
