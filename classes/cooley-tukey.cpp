@@ -10,7 +10,7 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 #include "fourier_algorithm.h"
 using std::complex;
 
-/*
+
 template<typename T>
 Cooley_tukey<T>::~Cooley_tukey()
 {
@@ -20,7 +20,7 @@ Cooley_tukey<T>::~Cooley_tukey()
 	index = nullptr;
 	value = nullptr;
 }
-*/
+
 template<typename T>
 Cooley_tukey<T>::Cooley_tukey()
 {
