@@ -5,8 +5,7 @@
 #include <vector>
 #include <complex>
 using std::complex;
-//TODO: change class and function name
-//TODO:: implement print file from fourier abstract classes
+
 template<typename T>
 class Brute_Force: public Fourier<T> {
 public:

@@ -20,16 +20,12 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 #include <fstream>
 using std::complex;
 
-//TODO: make a complex classes
-//TODO: make it so complex vector can be used in derived classes
-
 template<typename T>
 class Fourier
 {
   public:
     Fourier(T frequency, T frequency_step, std::string );
     virtual ~Fourier(void) = 0;
-    //TODO: Add copy constructor
 
     void setFrequency(double frequency);
     void setFrequencyStep(double frequency_step);
@@ -39,10 +35,7 @@ class Fourier
 
     void parseFile(std::string file_path, std::vector<double>& index, std::vector<double>& value);
     void outputFile(std::vector<complex<double>> result);
-    //TODO: print real and imaginary variables
-    //TODO: for loop to assign user input file to vector
-    //TODO: make class or struct for complex (complex object or structure)
-      //@ vector<complex>
+
   protected:
     double frequency;
     double frequency_step;
