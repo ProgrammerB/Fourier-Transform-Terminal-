@@ -16,10 +16,8 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
   @param frequency - frequency applied to the fourier algorithm
   @param frequency_step - frequency step applied to the fourier algorithm */
 template<typename T>
-Fourier<T>::Fourier(T frequency, T frequency_step)
+Fourier<T>::Fourier(double frequency, double frequency_step)
 {
-  frequency             = new T;
-  frequency_step        = new T;
   index                 = new std::vector<complex<T>>;
   value                 = new std::vector<complex<T>>;
 
