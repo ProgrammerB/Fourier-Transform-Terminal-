@@ -12,6 +12,7 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 #include <string>
 #include <vector>
 #include <typeinfo>
+#include <stdlib.h>
 #include "argument.h"
 #include "cooley-tukey.h"
 #include "brute-force.h"
@@ -74,13 +75,16 @@ void parseParam(int argc, char* argv[])
 
 void runParam(int argc, char* argv[])
 {
+  std::string file(argv[1]);
+  std::string output(argv[5]);
+
   if (argv[2] == BRUTE)
   {
-    Brute_force<double> brute_obj(std::string(argv[1]), std::stod(argv[3]), std::stod(argv[4]), std::string(argv[5]));
+    Brute_force<double> brute_obj(file, 20.0, 20.0, output);
   }
   else if (argv[1] == COOLEY)
   {
-    Cooley_tukey<double> cooley_obj(std::string(argv[1]), std::stod(argv[3]), std::stod(argv[4]), std::string(argv[5]));
+    //Cooley_tukey<double> cooley_obj(std::string(argv[1]), atof(argv[3]), atof(argv[4]), std::string(argv[5]));
   }
 }
 

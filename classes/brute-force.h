@@ -1,12 +1,13 @@
 #ifndef BRUTEFORCE_H
 #define BRUTEFORCE_H
+
 #include "fourier_algorithm.h"
 #include <cmath>
 #include <vector>
 #include <complex>
 using std::complex;
 
-template<typename T>
+template<class T>
 class Brute_force: public Fourier<T>
 {
   public:
