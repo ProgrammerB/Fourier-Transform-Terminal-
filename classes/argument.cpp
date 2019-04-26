@@ -76,11 +76,11 @@ void runParam(int argc, char* argv[])
 {
   if (argv[2] == BRUTE)
   {
-    Brute_Force<double> brute_obj(argv[1], argv[3], argv[4], argv[5]);
+    Brute_Force<double> brute_obj(argv[1], std::stod(argv[3](), std::stod(argv[4]), argv[5]);
   }
   else if (argv[1] == COOLEY)
   {
-    Cooley_tukey<double> cooley_obj(argv[1], argv[3], argv[4], argv[5]);
+    Cooley_tukey<double> cooley_obj(argv[1], std::stod(argv[3]), std::stod(argv[4]), argv[5]);
   }
 }
 
