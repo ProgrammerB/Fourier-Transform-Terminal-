@@ -24,7 +24,7 @@ template<typename T>
 class Fourier
 {
   public:
-    Fourier(double frequency, double frequency_step);
+    Fourier();
     ~Fourier(void); //makes Fourier class our "abstract" Base class
 
     void setFrequency    (double frequency);
