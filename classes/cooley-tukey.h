@@ -14,7 +14,7 @@ class Cooley_tukey: public Fourier<T>
 {
   public:
     Cooley_tukey();
-    Cooley_tukey<T>::Cooley_tukey(std::string file_name, double frequency, double frequency_step, std::string output_name);
+    Cooley_tukey(std::string file_name, double frequency, double frequency_step, std::string output_name);
     ~Cooley_tukey();
 
     void FFT(const std::vector<double> &index, const std::vector<double> &value);

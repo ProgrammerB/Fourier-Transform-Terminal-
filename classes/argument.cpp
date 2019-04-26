@@ -13,6 +13,8 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 #include <vector>
 #include <typeinfo>
 #include "argument.h"
+#include "cooley-tukey.h"
+#include "brute-force.h"
 
 const int REQUIRED_ARGS     = 5; // Args needed for the program fully run
 const int MIN_ARGS          = 2; // Minimum args needed to access the program
@@ -99,7 +101,8 @@ void runUniqueParam(std::string parameter)
 }
 
 
-/*Receives an ifstream object and prints its contents
+/*Receives an ifstream object and prints its contents. Mainly to be used for
+  testing purposes.
   @param file - text file to print
   @example  - printFile(file) @output: "Hello World\n"  */
 void printFile(std::string file_path)
