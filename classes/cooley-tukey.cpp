@@ -49,13 +49,14 @@ Cooley_tukey<T>::~Cooley_tukey()
 
 
 template<typename T>
-void Cooley_tukey<T>::FFT(const std::vector<double> &index, const std::vector<double> &value) {
-
+void Cooley_tukey<T>::FFT(const std::vector<double> &index, const std::vector<double> &value)
+{
 total_time = index.size();
 std::vector<complex<double>> temp;
 
 	// Make copy of array and apply window
-	for (int time = 0; time < total_time; time++) {
+	for (int time = 0; time < total_time; time++)
+	{
 		temp[time] = index[time];
 		temp[time] *= 1; // Window
 	}
@@ -66,7 +67,8 @@ std::vector<complex<double>> temp;
 
 
 template<typename T>
-std::vector<complex<double>> Cooley_tukey<T>::FFT_REC(std::vector<complex<double>> &temp, int total_time) {
+std::vector<complex<double>> Cooley_tukey<T>::FFT_REC(std::vector<complex<double>> &temp, int total_time)
+{
 	// Check if it is split up enough
 	if (total_time >= 2)
 	{
@@ -74,7 +76,8 @@ std::vector<complex<double>> Cooley_tukey<T>::FFT_REC(std::vector<complex<double
 		// Split even and odds up
 		complex<double> odd[total_time/2];
 		complex<double> even[total_time/2];
-		for (int i = 0; i < total_time / 2; i++) {
+		for (int i = 0; i < total_time / 2; i++)
+		{
 			even[i] = temp[i*2];
 			odd[i] 	= temp[i*2+1];
 		}
@@ -85,7 +88,8 @@ std::vector<complex<double>> Cooley_tukey<T>::FFT_REC(std::vector<complex<double
 
 
 		// DFT portion of FFT - calculates after everything has been split up through FFT_REC
-		for (int frequency = 0; frequency < total_time / 2; frequency += frequency_step) {
+		for (int frequency = 0; frequency < total_time / 2; frequency += frequency_step)
+		{
 			std::complex<double> t = exp(std::complex<double>(0, -2 * M_PI * frequency / total_time)) * odd[frequency];
 
 			//Result of Cooley-Tukey algorithm:
