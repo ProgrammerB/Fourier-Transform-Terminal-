@@ -9,14 +9,9 @@ using std::complex;
 using std::exp;
 
 //Brute Force constructor
-Brute_Force::Brute_Force(){
-  frequency             = new T;
-  frequency_step        = new T;
+Brute_Force<T>::Brute_Force(){
   index                 = new std::vector<complex<T>>;
   value                 = new std::vector<complex<T>>;
-
-  this->frequency       = frequency;
-  this->frequency_step  = frequency_step;
 }
 
 template<typename T>
