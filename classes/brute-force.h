@@ -11,6 +11,7 @@ template<typename T>
 class Brute_Force: public Fourier<T> {
 public:
   Brute_Force();
+  ~Brute_Force();
   //~Brute_Force();
   std::vector<complex<double>> DFT(const std::vector<double> &index,
     const std::vector<double> &value,std::vector<complex<double>> &result);
