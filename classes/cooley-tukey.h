@@ -18,7 +18,7 @@ public:
   //~Cooley_tukey();
 
   void FFT(const std::vector<double> &index, const std::vector<double> &value);
-  void FFT_REC(std::vector<complex<double>> &x, int total_time); //recursion function for FFT
+  std::vector<complex<double>> FFT_REC(std::vector<complex<double>> &x, int total_time); //recursion function for FFT
 private:
   double total_time;
   double frequency;

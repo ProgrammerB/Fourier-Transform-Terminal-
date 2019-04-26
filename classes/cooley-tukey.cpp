@@ -51,7 +51,7 @@ std::vector<complex<double>> temp;
 }
 
 template<typename T>
-void Cooley_tukey<T>::FFT_REC(std::vector<complex<double>> &temp, int total_time) {
+std::vector<complex<double>> Cooley_tukey<T>::FFT_REC(std::vector<complex<double>> &temp, int total_time) {
 	// Check if it is splitted enough
 	if (total_time <= 1) {
 		return;
@@ -76,4 +76,5 @@ void Cooley_tukey<T>::FFT_REC(std::vector<complex<double>> &temp, int total_time
 		temp[frequency] = even[frequency] + t;
 		temp[total_time / 2 + frequency] = even[frequency] - t;
 	}
+	return temp;
 }
