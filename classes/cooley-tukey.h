@@ -5,13 +5,13 @@
 
 Copyright(c) 2019 Braxton Laster & Ben Rader
 */
-//TODO: change class and function name
 #ifndef COOLEY_TUKEY_H
 #define COOLEY_TUKEY_H
 #include "fourier_algorithm.h"
 
 template<typename T>
-class Cooley_tukey: public Fourier<T> {
+class Cooley_tukey: public Fourier<T>
+{
   public:
     Cooley_tukey();
     Cooley_tukey(T frequency, T frequency_step);

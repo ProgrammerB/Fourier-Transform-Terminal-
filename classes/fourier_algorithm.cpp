@@ -10,7 +10,6 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 #include "cooley-tukey.h"
 #include <vector>
 
-
 /*Default constructor assigned memory to frequency and frequency_step then
   sets that equal to the given parameters.
   @param frequency - frequency applied to the fourier algorithm
@@ -34,8 +33,8 @@ virtual Fourier<T>::~Fourier(void)
   delete index;
   delete value;
 
-  index           = nullptr;
-  value           = nullptr;
+  index = nullptr;
+  value = nullptr;
 }
 
 /*Sets frequency equal to the given input

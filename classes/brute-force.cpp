@@ -10,28 +10,26 @@ using std::exp;
 
 //Brute Force constructor
 template<typename T>
-Brute_Force<T>::Brute_Force(){
+Brute_force<T>::Brute_force()
+{
   index                 = new std::vector<complex<T>>;
   value                 = new std::vector<complex<T>>;
 }
 
 template<typename T>
-Brute_Force<T>::~Brute_Force()
+Brute_force<T>::~Brute_force()
 {
   delete [] index;
   delete [] value;
+
   index = nullptr;
   value = nullptr;
 }
 
-//TODO: change parameter to vector<complex<double>>
 template<typename T>
-std::vector<complex<double>> Brute_Force<T>::DFT(const std::vector<double> &index,
-   const std::vector<double> &value, std::vector<complex<double>> &result) {
-//  std::vector<complex<double>> value(index.size());
-  //Changing real and imaginary parameters
-    //@ real(vector.at(i));  -returns real part
-    //@ imag(vector.at(i));  -returns imaginary part
+std::vector<complex<double>> Brute_force<T>::DFT(const std::vector<double> &index,
+   const std::vector<double> &value, std::vector<complex<double>> &result)
+{
   std::vector<complex<double>> temp; //temporary complex<double> vector to be made equal to result
   for (size_t frequency = 0; frequency < index.size(); frequency += frequency_step) {  // For each output element
     complex<double> sum(0.0, 0.0);
@@ -39,9 +37,6 @@ std::vector<complex<double>> Brute_Force<T>::DFT(const std::vector<double> &inde
       double angle = 2 * M_PI * time * frequency / index.size();
       sum = sum + index[time] * exp(-angle);
     }
-    //outreal[k] = sumreal;
-    //outimag[k] = sumimag;
-    //value.at(frequency) = temp;
     temp.push_back(sum);
   }
   return temp;
