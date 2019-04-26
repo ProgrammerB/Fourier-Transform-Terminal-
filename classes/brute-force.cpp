@@ -8,6 +8,7 @@ using std::complex;  //same as using complex
 using std::exp;
 //using complex = std::complex<double>;
 
+/*
 template<typename T>
 Brute_Force<T>::~Brute_Force()
 {
@@ -16,6 +17,7 @@ Brute_Force<T>::~Brute_Force()
   index = nullptr;
   value = nullptr;
 }
+*/
 
 //TODO: change parameter to vector<complex<double>>
 template<typename T>

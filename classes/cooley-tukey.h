@@ -11,10 +11,11 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 #include "fourier_algorithm.h"
 
 template<typename T>
-class Cooley_tukey: protected Fourier<T> {
+class Cooley_tukey: public Fourier<T> {
 public:
-  Cooley_tukey(T frequency, T frequency_step)
-  ~Cooley_tukey();
+  Cooley_tukey();
+  Cooley_tukey(T frequency, T frequency_step);
+  //~Cooley_tukey();
 
   void FFT(const std::vector<double> &index, const std::vector<double> &value);
   void FFT_REC(std::vector<complex<double>> &x, int total_time); //recursion function for FFT

@@ -9,7 +9,7 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 #include "Cooley-tukey.h"
 #include "fourier_algorithm.h"
 
-
+/*
 template<typename T>
 Cooley_tukey<T>::~Cooley_tukey()
 {
@@ -18,6 +18,18 @@ Cooley_tukey<T>::~Cooley_tukey()
 
 	index = nullptr;
 	value = nullptr;
+}
+*/
+template<typename T>
+Cooley_tukey<T>::Cooley_tukey()
+{
+	index = new std::vector<complex<T>>;
+	value = new std::vector<complex<T>>;
+
+	file_name = "none";
+	output_name = "result.txt";
+	frequency_step = 0;
+	frequency = 0;
 }
 
 
