@@ -18,8 +18,8 @@ using namespace std;
 
 void programStart(int argc, char* argv[])
 {
-  Brute_Force<double> brute_obj();
-  Cooley_tukey<double> cooley_obj();
+  //Brute_Force<double> brute_obj();
+  //Cooley_tukey<double> cooley_obj();
 
   if(checkNumParam(argc))
   {

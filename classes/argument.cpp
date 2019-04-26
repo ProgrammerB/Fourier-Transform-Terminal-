@@ -55,16 +55,13 @@ void parseParam(int argc, char* argv[])
 {
   try
   {
-    for(int current_arg = 1; current_arg < argc; current_arg++)
+    if(argc == MIN_ARGS)
     {
-      if(argc == MIN_ARGS)
-      {
-        runUniqueParam(argv[current_arg]);
-      }
-      else if (argc == REQUIRED_ARGS)
-      {
-        runParam(argv[current_arg], current_arg, argv);
-      }
+      runUniqueParam(argv[1]);
+    }
+    else if (argc == REQUIRED_ARGS)
+    {
+      runParam(argv, argc);
     }
   }
   catch(std::runtime_error& exception)
@@ -74,18 +71,15 @@ void parseParam(int argc, char* argv[])
 }
 
 
-void runParam(std::string parameter, int arg_num, char* argv[])
+void runParam(int argc, char* argv[])
 {
-  if (arg_num == 2)
+  if (argv[2] == BRUTE)
   {
-    if (parameter == BRUTE)
-    {
-      //Brute_force<typeid(argv[4]).name()> brute_obj;
-    }
-    else if (parameter == COOLEY)
-    {
-      //Cooley_tukey<typeid(argv[4]).name()> cooley_obj;
-    }
+    Brute_Force<double> brute_obj(argv[1], argv[3], argv[4], argv[5]);
+  }
+  else if (argv[1] == COOLEY)
+  {
+    
   }
 }
 
