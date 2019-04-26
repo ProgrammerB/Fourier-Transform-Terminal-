@@ -78,7 +78,7 @@ double Fourier<T>::getFrequencyStep(void) const
 template<typename T>
 void Fourier<T>::parseFile(std::string file_path, std::vector<double>& index, std::vector<double>& value)
 {
-  double time = 0.0;
+  double time        = 0.0;
   double temperature = 0.0;
   std::ifstream file(file_path);
 

@@ -25,15 +25,15 @@ class Fourier
 {
   public:
     Fourier(T frequency, T frequency_step, std::string );
-    virtual ~Fourier(void) = 0;
+    virtual ~Fourier(void) = 0; //makes Fourier class our "abstract" Base class
 
-    void setFrequency(double frequency);
+    void setFrequency    (double frequency);
     void setFrequencyStep(double frequency_step);
 
-    double getFrequency(void)     const;
+    double getFrequency    (void) const;
     double getFrequencyStep(void) const;
 
-    void parseFile(std::string file_path, std::vector<double>& index, std::vector<double>& value);
+    void parseFile (std::string file_path, std::vector<double>& index, std::vector<double>& value);
     void outputFile(std::vector<complex<double>> result);
 
   protected:
