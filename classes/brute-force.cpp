@@ -10,14 +10,14 @@ using std::exp;
 
 //Brute Force constructor
 template<typename T>
-Brute_Force<T>::Brute_Force(){
+Brute_force<T>::Brute_force(){
   index = new std::vector<complex<T>>;
   value = new std::vector<complex<T>>;
 }
 
 
 template<typename T>
-Brute_Force<T>::Brute_Force(std::string file_name, double frequency, double frequency_step, std::string output_name)
+Brute_force<T>::Brute_force(std::string file_name, double frequency, double frequency_step, std::string output_name)
 {
   this->file_name = file_name;
   this->frequency = frequency;
