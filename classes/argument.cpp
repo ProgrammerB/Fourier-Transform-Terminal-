@@ -24,7 +24,6 @@ const std::string TEXT_DIRECTORY = "text_files\\"; // Directory for text files
 const std::string HELP_PATH = TEXT_DIRECTORY + "helpMenu.txt";
 const std::string LIST_PATH = TEXT_DIRECTORY + "listMenu.txt";
 
-void runParam(std::string parameter, int arg_num, char* argv[]);
 
 /*Checks for the amount of command-line parameters entered and throws an
   exception if there aren't enough to run the program correctly

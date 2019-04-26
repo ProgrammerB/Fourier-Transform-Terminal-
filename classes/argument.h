@@ -12,6 +12,7 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 bool checkNumParam(int argc);
 void parseParam(int argc, char* argv[]);
 
+void runParam(std::string parameter, int arg_num, char* argv[]);
 void runUniqueParam(std::string parameter);
 void printFile(std::string file_path);
 
