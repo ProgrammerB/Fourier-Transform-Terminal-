@@ -60,7 +60,7 @@ std::vector<complex<double>> temp;
 		temp[time] *= 1; // Window
 	}
 
-	// Start recursion
+	// Start recursion function to split up the tasks
 	FFT_REC(temp, total_time);
 }
 
@@ -76,7 +76,7 @@ std::vector<complex<double>> Cooley_tukey<T>::FFT_REC(std::vector<complex<double
 		complex<double> even[total_time/2];
 		for (int i = 0; i < total_time / 2; i++) {
 			even[i] = temp[i*2];
-			odd[i] = temp[i*2+1];
+			odd[i] 	= temp[i*2+1];
 		}
 
 		// Split up tasks through FFT recursion method
@@ -87,8 +87,12 @@ std::vector<complex<double>> Cooley_tukey<T>::FFT_REC(std::vector<complex<double
 		// DFT portion of FFT - calculates after everything has been split up through FFT_REC
 		for (int frequency = 0; frequency < total_time / 2; frequency += frequency_step) {
 			std::complex<double> t = exp(std::complex<double>(0, -2 * M_PI * frequency / total_time)) * odd[frequency];
+
+			//Result of Cooley-Tukey algorithm:
+				//*This gives us the frequency values at certain times
 			temp[frequency] = even[frequency] + t;
 			temp[total_time / 2 + frequency] = even[frequency] - t;
+
 		}
 	}
 	return temp;
