@@ -47,7 +47,7 @@ std::vector<complex<double>> Brute_force<T>::DFT(const std::vector<double> &inde
   std::vector<complex<double>> temp; //temporary complex<double> vector to be made equal to result
 
   // For each output element
-  for (size_t freq = 0; freq < index.size(); freq += frequency_step)
+  for (size_t freq = 0; freq < index.size(); freq += this->frequency_step)
   {
     complex<double> sum(0.0, 0.0);
     // For each input element
