@@ -14,6 +14,14 @@ public:
   //~Brute_Force();
   std::vector<complex<double>> DFT(const std::vector<double> &index,
     const std::vector<double> &value,std::vector<complex<double>> &result);
+private:
+  double frequency;
+  double frequency_step;
+  std::vector<complex<T>> result;
+  std::vector<T>* index;
+  std::vector<T>* value;
+  std::string file_name;
+  std::string output_name;
 };
 
 #endif
