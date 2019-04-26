@@ -33,13 +33,9 @@ Fourier<T>::Fourier(T frequency, T frequency_step)
 template<typename T>
 virtual Fourier<T>::~Fourier(void)
 {
-  delete frequency;
-  delete frequency_step;
   delete index;
   delete value;
 
-  frequency       = nullptr;
-  frequency_step  = nullptr;
   index           = nullptr;
   value           = nullptr;
 }
