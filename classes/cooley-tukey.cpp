@@ -8,6 +8,7 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 
 #include "Cooley-tukey.h"
 #include "fourier_algorithm.h"
+using std::complex;
 
 /*
 template<typename T>
@@ -50,7 +51,7 @@ std::vector<complex<double>> temp;
 }
 
 template<typename T>
-void Cooley_tukey<T>::FFT_REC(std::vector<complex<double>> &x, int total_time) {
+void Cooley_tukey<T>::FFT_REC(std::vector<complex<double>> &temp, int total_time) {
 	// Check if it is splitted enough
 	if (total_time <= 1) {
 		return;
@@ -72,7 +73,7 @@ void Cooley_tukey<T>::FFT_REC(std::vector<complex<double>> &x, int total_time) {
 	// Calculate DFT
 	for (int frequency = 0; frequency < total_time / 2; frequency += frequency_step) {
 		std::complex<double> t = exp(std::complex<double>(0, -2 * M_PI * frequency / total_time)) * odd[frequency];
-		x[frequency] = even[frequency] + t;
-		x[total_time / 2 + frequency] = even[frequency] - t;
+		temp[frequency] = even[frequency] + t;
+		temp[total_time / 2 + frequency] = even[frequency] - t;
 	}
 }
