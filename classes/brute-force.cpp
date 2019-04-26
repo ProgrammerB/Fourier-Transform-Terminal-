@@ -9,6 +9,7 @@ using std::complex;
 using std::exp;
 
 //Brute Force constructor
+template<typename T>
 Brute_Force<T>::Brute_Force(){
   index                 = new std::vector<complex<T>>;
   value                 = new std::vector<complex<T>>;
@@ -45,13 +46,3 @@ std::vector<complex<double>> Brute_Force<T>::DFT(const std::vector<double> &inde
   }
   return temp;
 }
-
-/*
-
-BRAXTON::TODO
-
-for (int elements = 0; elements < index.size(); elements++)
-{
-    value = std::exp(std::complex(0, ))
-}
-*/
