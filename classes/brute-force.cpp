@@ -1,23 +1,32 @@
 #include "brute-force.h"
+#include "fourier_algorithm.h"
 #include <complex>
 #include <vector>
 #include <algorithm>
 #include <array>
 #include <cstdint>
-using std::complex;  //same as using complex
+using std::complex;
 using std::exp;
-//using complex = std::complex<double>;
 
-/*
+//Brute Force constructor
+Brute_Force::Brute_Force(){
+  frequency             = new T;
+  frequency_step        = new T;
+  index                 = new std::vector<complex<T>>;
+  value                 = new std::vector<complex<T>>;
+
+  this->frequency       = frequency;
+  this->frequency_step  = frequency_step;
+}
+
 template<typename T>
 Brute_Force<T>::~Brute_Force()
 {
-  delete  index;
-  delete  value;
+  delete [] index;
+  delete [] value;
   index = nullptr;
   value = nullptr;
 }
-*/
 
 //TODO: change parameter to vector<complex<double>>
 template<typename T>
