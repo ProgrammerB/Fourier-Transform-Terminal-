@@ -24,7 +24,7 @@ template<typename T>
 class Fourier
 {
   public:
-    Fourier(T frequency, T frequency_step, std::string );
+    Fourier(double frequency, double frequency_step);
     virtual ~Fourier(void) = 0; //makes Fourier class our "abstract" Base class
 
     void setFrequency    (double frequency);
@@ -34,7 +34,7 @@ class Fourier
     double getFrequencyStep(void) const;
 
     void parseFile (std::string file_path, std::vector<double>& index, std::vector<double>& value);
-    void outputFile(std::vector<complex<double>> result);
+    void outputFile(std::vector<complex<double>> result, std::string file_name = "result.txt");
 
   protected:
     double frequency;

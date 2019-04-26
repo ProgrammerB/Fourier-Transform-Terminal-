@@ -6,9 +6,16 @@
 Copyright(c) 2019 Braxton Laster & Ben Rader
 */
 
+#include <fstream>
+#include <vector>
+#include <iostream>
+#include <string>
+#include <complex>
+#include <sstream>
 #include "fourier_algorithm.h"
 #include "cooley-tukey.h"
-#include <vector>
+using std::complex;
+
 
 /*Default constructor assigned memory to frequency and frequency_step then
   sets that equal to the given parameters.
@@ -24,18 +31,6 @@ Fourier<T>::Fourier(double frequency, double frequency_step)
   this->frequency_step  = frequency_step;
 }
 
-
-/*Default constructor, deallocates memory to frequency and frequency_step then
-  assigns them to a nullptr value */
-template<typename T>
-virtual Fourier<T>::~Fourier(void)
-{
-  delete index;
-  delete value;
-
-  index = nullptr;
-  value = nullptr;
-}
 
 /*Sets frequency equal to the given input
   @param frequency - double val to assign frequency*/
@@ -92,14 +87,17 @@ void Fourier<T>::parseFile(std::string file_path, std::vector<double>& index, st
 }
 
 template<typename T>
-void Fourier<T>::outputFile(std::vector<complex<double>> result, std::string file_name = "result.txt")
+void Fourier<T>::outputFile(std::vector<complex<double>> result, std::string file_name)
 {
-  std::ofstream file;
-  file.open(file_name);
+  std::ofstream file(file_name);
+  std::ostringstream convert_string;
 
-  if (file.open())
+  if (file.is_open())
   {
-    while (file << result);
+    for (int vector_index = 0; vector_index < result.size(); vector_index++)
+    {
+      file << std::real(result.at(vector_index)) << " " << std::imag(result.at(vector_index)) << '\n';
+    }
   }
 
   file.close();
