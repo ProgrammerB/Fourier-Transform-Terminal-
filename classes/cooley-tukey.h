@@ -19,7 +19,15 @@ public:
 
   void FFT(const std::vector<double> &index, const std::vector<double> &value);
   void FFT_REC(std::vector<complex<double>> &x, int total_time); //recursion function for FFT
+private:
   double total_time;
+  double frequency;
+  double frequency_step;
+  std::vector<complex<T>> result;
+  std::vector<T>* index;
+  std::vector<T>* value;
+  std::string file_name;
+  std::string output_name;
 };
 
 
