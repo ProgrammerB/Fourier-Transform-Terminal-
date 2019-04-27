@@ -24,8 +24,8 @@ using std::complex;
 template<typename T>
 Fourier<T>::Fourier()
 {
-  index                 = new std::vector<std::complex<T>>;
-  value                 = new std::vector<std::complex<T>>;
+  index                 = new std::vector<double>;
+  value                 = new std::vector<double>;
 
   this->frequency       = frequency;
   this->frequency_step  = frequency_step;

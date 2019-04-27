@@ -11,8 +11,8 @@ using std::exp;
 //Brute Force constructor
 template<typename T>
 Brute_force<T>::Brute_force(){
-  this->index = new std::vector<complex<T>>;
-  this->value = new std::vector<complex<T>>;
+  this->index = new std::vector<double>;
+  this->value = new std::vector<double>;
 }
 
 
