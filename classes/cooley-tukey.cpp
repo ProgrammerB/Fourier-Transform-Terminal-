@@ -13,7 +13,6 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 #include <complex>
 using std::complex;
 
-
 template<typename T>
 Cooley_tukey<T>::Cooley_tukey()
 {
@@ -78,28 +77,28 @@ std::vector<complex<T>> Cooley_tukey<T>::FFT_REC(std::vector<complex<T>>& temp, 
 	{
 
 		// Split even and odds up
-		complex<T> odd[total_time/2];
-		complex<T> even[total_time/2];
+		std::vector<complex<T>> odd[total_time/2];
+		std::vector<complex<T>> even[total_time/2];
 		for (int i = 0; i < total_time / 2; i++)
 		{
-			even[i] = temp[i*2];
-			odd[i] 	= temp[i*2+1];
+			even->at(i) = temp.at(i*2);
+			odd->at(i) 	= temp.at(i*2+1);
 		}
 
 		// Split up tasks through FFT recursion method
-		FFT_REC(even, total_time/2);
-		FFT_REC(odd, total_time/2);
+		FFT_REC(even, total_time / 2);
+		FFT_REC(odd, total_time / 2);
 
 
 		// DFT portion of FFT - calculates after everything has been split up through FFT_REC
 		for (int frequency = 0; frequency < total_time / 2; frequency += this->frequency_step)
 		{
-			std::complex<T> t = exp(std::complex<T>(0, -2 * M_PI * frequency / total_time)) * odd[frequency];
+			std::complex<T> t = exp(std::complex<T>(0, -2 * M_PI * frequency / total_time)) * odd->at(frequency);
 
 			//Result of Cooley-Tukey algorithm:
 				//*This gives us the frequency values at certain times
-			temp[frequency] = even[frequency] + t;
-			temp[total_time / 2 + frequency] = even[frequency] - t;
+			temp.at(frequency) = even->at(frequency) + t;
+			temp.at(total_time / 2 + frequency) = even->at(frequency) - t;
 
 		}
 	}
