@@ -8,21 +8,22 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 
 #include "Cooley-tukey.h"
 #include "fourier_algorithm.h"
+#include <string>
 using std::complex;
 
-/*
+
 template<typename T>
 Cooley_tukey<T>::Cooley_tukey()
 {
-	index = new std::vector<complex<T>>;
-	value = new std::vector<complex<T>>;
+	this->index = new std::vector<T>;
+	this->value = new std::vector<T>;
 
-	file_name = "none";
-	output_name = "result.txt";
-	frequency_step = 0;
-	frequency = 0;
+	this->file_name = "none";
+	this->output_name = "result.txt";
+	this->frequency_step = 0;
+	this->frequency = 0;
 }
-*/
+
 
 template<typename T>
 Cooley_tukey<T>::Cooley_tukey(std::string file_name, double frequency, double frequency_step, std::string output_name)
@@ -32,8 +33,8 @@ Cooley_tukey<T>::Cooley_tukey(std::string file_name, double frequency, double fr
   this->frequency_step = frequency_step;
   this->output_name = output_name;
 
-  this->index = new std::vector<double>;
-  this->value = new std::vector<double>;
+  this->index = new std::vector<T>;
+  this->value = new std::vector<T>;
 }
 
 /*
@@ -101,3 +102,5 @@ std::vector<complex<double>> Cooley_tukey<T>::FFT_REC(std::vector<complex<double
 	}
 	return temp;
 }
+
+template class Cooley_tukey<double>;

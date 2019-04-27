@@ -11,8 +11,8 @@ using std::exp;
 //Brute Force constructor
 template<typename T>
 Brute_force<T>::Brute_force(){
-  this->index = new std::vector<double>;
-  this->value = new std::vector<double>;
+  this->index = new std::vector<T>;
+  this->value = new std::vector<T>;
 }
 
 
@@ -24,8 +24,8 @@ Brute_force<T>::Brute_force(std::string file_name, double frequency, double freq
   this->frequency_step = frequency_step;
   this->output_name = output_name;
 
-  this->index = new std::vector<double>;
-  this->value = new std::vector<double>;
+  this->index = new std::vector<T>;
+  this->value = new std::vector<T>;
 }
 
 /*
