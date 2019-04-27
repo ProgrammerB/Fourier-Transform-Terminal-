@@ -23,8 +23,8 @@ class Cooley_tukey: protected Fourier<T>
     Cooley_tukey(std::string file_name, double frequency, double frequency_step, std::string output_name);
     //~Cooley_tukey();
 
-    void FFT(const std::vector<double> &index, const std::vector<double> &value);
-    std::vector<complex<double>> FFT_REC(std::vector<complex<double>> &x, int total_time); //recursion function for FFT
+    void FFT(const std::vector<T> &index, const std::vector<T> &value);
+    std::vector<complex<T>> FFT_REC(std::vector<complex<T>> &temp, int total_time); //recursion function for FFT
 
   private:
     double total_time;
