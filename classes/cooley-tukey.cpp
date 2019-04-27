@@ -9,6 +9,8 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 #include "Cooley-tukey.h"
 #include "fourier_algorithm.h"
 #include <string>
+#include <vector>
+#include <complex>
 using std::complex;
 
 
@@ -35,7 +37,7 @@ Cooley_tukey<T>::Cooley_tukey(std::string file_name, double frequency, double fr
 
   this->index = new std::vector<T>;
   this->value = new std::vector<T>;
-	total_time = this->index.size();
+	total_time = this->index->size();
 }
 
 /*

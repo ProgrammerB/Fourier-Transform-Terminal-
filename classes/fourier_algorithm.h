@@ -34,7 +34,7 @@ class Fourier
     double getFrequencyStep(void) const;
 
     void parseFile (std::string file_path, std::vector<double>& index, std::vector<double>& value);
-    void outputFile(std::vector<complex<double>> result, std::string file_name = "result.txt");
+    void outputFile(std::vector<complex<T>> result, std::string file_name = "result.txt");
 
   protected:
     double frequency;
