@@ -9,9 +9,8 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 #include "Cooley-tukey.h"
 #include "fourier_algorithm.h"
 #include <string>
-#include <vector>
-#include <complex>
 using std::complex;
+
 
 template<typename T>
 Cooley_tukey<T>::Cooley_tukey()
@@ -36,7 +35,7 @@ Cooley_tukey<T>::Cooley_tukey(std::string file_name, double frequency, double fr
 
   this->index = new std::vector<T>;
   this->value = new std::vector<T>;
-	total_time = this->index->size();
+	total_time = this->index.size();
 }
 
 /*
@@ -54,7 +53,6 @@ Cooley_tukey<T>::~Cooley_tukey()
 template<typename T>
 void Cooley_tukey<T>::FFT(const std::vector<T> &index, const std::vector<T> &value)
 {
-total_time = index.size();
 std::vector<complex<T>> temp;
 
 	// Make copy of array and apply window
@@ -77,28 +75,28 @@ std::vector<complex<T>> Cooley_tukey<T>::FFT_REC(std::vector<complex<T>>& temp, 
 	{
 
 		// Split even and odds up
-		std::vector<complex<T>> odd[total_time/2];
-		std::vector<complex<T>> even[total_time/2];
+		complex<T> odd[total_time/2];
+		complex<T> even[total_time/2];
 		for (int i = 0; i < total_time / 2; i++)
 		{
-			even->at(i) = temp.at(i*2);
-			odd->at(i) 	= temp.at(i*2+1);
+			even[i] = temp[i*2];
+			odd[i] 	= temp[i*2+1];
 		}
 
 		// Split up tasks through FFT recursion method
-		FFT_REC(even, total_time / 2);
-		FFT_REC(odd, total_time / 2);
+		FFT_REC(even, total_time/2);
+		FFT_REC(odd, total_time/2);
 
 
 		// DFT portion of FFT - calculates after everything has been split up through FFT_REC
 		for (int frequency = 0; frequency < total_time / 2; frequency += this->frequency_step)
 		{
-			std::complex<T> t = exp(std::complex<T>(0, -2 * M_PI * frequency / total_time)) * odd->at(frequency);
+			std::complex<T> t = exp(std::complex<T>(0, -2 * M_PI * frequency / total_time)) * odd[frequency];
 
 			//Result of Cooley-Tukey algorithm:
 				//*This gives us the frequency values at certain times
-			temp.at(frequency) = even->at(frequency) + t;
-			temp.at(total_time / 2 + frequency) = even->at(frequency) - t;
+			temp[frequency] = even[frequency] + t;
+			temp[total_time / 2 + frequency] = even[frequency] - t;
 
 		}
 	}
