@@ -105,7 +105,7 @@ void Fourier<T>::outputFile(std::vector<complex<double>> result, std::string fil
 
   if (file.is_open())
   {
-    for (int vector_index = 0; vector_index < result.size(); vector_index++)
+    for (unsigned int vector_index = 0; vector_index < result.size(); vector_index++)
     {
       file << std::real(result.at(vector_index)) << " " << std::imag(result.at(vector_index)) << '\n';
     }
