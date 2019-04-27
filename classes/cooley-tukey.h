@@ -27,7 +27,7 @@ class Cooley_tukey: protected Fourier<T>
     std::vector<complex<T>> FFT_REC(std::vector<complex<T>> &temp, int total_time); //recursion function for FFT
 
   private:
-    double total_time;
+    int total_time;
 };
 
 
