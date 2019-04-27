@@ -24,8 +24,8 @@ Brute_force<T>::Brute_force(std::string file_name, double frequency, double freq
   this->frequency_step = frequency_step;
   this->output_name = output_name;
 
-  this->index = new std::vector<complex<T>>;
-  this->value = new std::vector<complex<T>>;
+  this->index = new std::vector<double>;
+  this->value = new std::vector<double>;
 }
 
 /*
