@@ -10,7 +10,7 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 #include "fourier_algorithm.h"
 using std::complex;
 
-
+/*
 template<typename T>
 Cooley_tukey<T>::Cooley_tukey()
 {
@@ -22,21 +22,21 @@ Cooley_tukey<T>::Cooley_tukey()
 	frequency_step = 0;
 	frequency = 0;
 }
-
+*/
 
 template<typename T>
 Cooley_tukey<T>::Cooley_tukey(std::string file_name, double frequency, double frequency_step, std::string output_name)
 {
-  this->file_name = file_name;
+	this->file_name = file_name;
   this->frequency = frequency;
   this->frequency_step = frequency_step;
   this->output_name = output_name;
 
-  index = new std::vector<complex<T>>;
-  value = new std::vector<complex<T>>;
+  this->index = new std::vector<double>;
+  this->value = new std::vector<double>;
 }
 
-
+/*
 template<typename T>
 Cooley_tukey<T>::~Cooley_tukey()
 {
@@ -46,7 +46,7 @@ Cooley_tukey<T>::~Cooley_tukey()
 	index = nullptr;
 	value = nullptr;
 }
-
+*/
 
 template<typename T>
 void Cooley_tukey<T>::FFT(const std::vector<double> &index, const std::vector<double> &value)
@@ -88,7 +88,7 @@ std::vector<complex<double>> Cooley_tukey<T>::FFT_REC(std::vector<complex<double
 
 
 		// DFT portion of FFT - calculates after everything has been split up through FFT_REC
-		for (int frequency = 0; frequency < total_time / 2; frequency += frequency_step)
+		for (int frequency = 0; frequency < total_time / 2; frequency += this->frequency_step)
 		{
 			std::complex<double> t = exp(std::complex<double>(0, -2 * M_PI * frequency / total_time)) * odd[frequency];
 

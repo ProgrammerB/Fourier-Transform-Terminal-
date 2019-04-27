@@ -84,7 +84,7 @@ void runParam(int argc, char* argv[])
   }
   else if (argv[1] == COOLEY)
   {
-    //Cooley_tukey<double> cooley_obj(std::string(argv[1]), atof(argv[3]), atof(argv[4]), std::string(argv[5]));
+    Cooley_tukey<double> cooley_obj(std::string(argv[1]), atof(argv[3]), atof(argv[4]), std::string(argv[5]));
   }
 }
 
