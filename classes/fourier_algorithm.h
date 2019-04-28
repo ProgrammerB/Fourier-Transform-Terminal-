@@ -36,7 +36,7 @@ class Fourier
     std::string getOutputName(void) {return output_name; }
     std::vector<T>* getIndex(void) {return index; }
     std::vector<T>* getValue(void) {return value; }
-    std::vector<complex<T> getResult(void) {return result; }
+    std::vector<complex<T>>& getResult(void) {return result; }
 
     void parseFile (std::string file_path, std::vector<double>* index, std::vector<double>* value);
     void outputFile(std::vector<complex<T>> result, std::string file_name = "result.txt");
