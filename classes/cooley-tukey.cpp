@@ -55,15 +55,17 @@ Cooley_tukey<T>::~Cooley_tukey()
 template<typename T>
 void Cooley_tukey<T>::FFT(std::vector<T>* index, std::vector<T>* value, std::vector<complex<T>>& result)
 {
+	std::cout << index->size() << std::endl;
 	// Make copy of array and apply window
-	for (int time = 0; time < total_time; time++)
+	for (unsigned int time = 0; time < index->size(); time++)
 	{
-		result.at(time) = index->at(time);
+		result.push_back(index->at(time));
+		std::cout << result.at(time) << std::endl;
 		//temp.at(time) *= 1; // Window
 	}
 
 	// Start recursion function to split up the tasks
-	FFT_REC(result, total_time);
+	FFT_REC(result, index->size());
 }
 
 
