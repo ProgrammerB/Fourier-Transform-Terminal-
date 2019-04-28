@@ -155,4 +155,6 @@ void parseFile(std::string file_path, std::vector<double>& index, std::vector<do
     index.push_back(time);
     value.push_back(temperature);
   }
+
+  file.close();
 }

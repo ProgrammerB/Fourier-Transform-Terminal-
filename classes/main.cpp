@@ -26,7 +26,6 @@ void programStart(int argc, char* argv[])
 
 int main(int argc, char* argv[])
 {
-  cout << argc << endl;
   programStart(argc, argv);
 
   return 0;
