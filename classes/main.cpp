@@ -18,9 +18,6 @@ using namespace std;
 
 void programStart(int argc, char* argv[])
 {
-  Brute_force<double> brute_obj();
-  Cooley_tukey<double> cooley_obj();
-
   if(checkNumParam(argc))
   {
     parseParam(argc, argv);
@@ -29,6 +26,7 @@ void programStart(int argc, char* argv[])
 
 int main(int argc, char* argv[])
 {
+  cout << argc << endl;
   programStart(argc, argv);
 
   return 0;

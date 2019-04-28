@@ -17,7 +17,7 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 #include "cooley-tukey.h"
 #include "brute-force.h"
 
-const int REQUIRED_ARGS     = 5; // Args needed for the program fully run
+const int REQUIRED_ARGS     = 6; // Args needed for the program fully run
 const int MIN_ARGS          = 2; // Minimum args needed to access the program
 const std::string HELP      = "-help"; // String literal for the '-help' option
 const std::string LIST      = "-list"; // String literal for the '-list' option
@@ -35,11 +35,18 @@ bool checkNumParam(int argc)
 {
   try
   {
-    if(argc != MIN_ARGS && argc != REQUIRED_ARGS)
+    if(argc == REQUIRED_ARGS)
+    {
+      return true;
+    }
+    else if (argc == MIN_ARGS)
+    {
+      return true;
+    }
+    else
     {
       throw std::runtime_error("ERROR: To few arguments, try " + HELP);
     }
-    return true;
   }
   catch(std::runtime_error& exception)
   {
@@ -80,7 +87,7 @@ void runParam(int argc, char* argv[])
 
   if (argv[2] == BRUTE)
   {
-    Brute_force<double> brute_obj(file, std::atof(argv[3]), std::atof(argv[4]), output);
+    Brute_force<double> brute_obj(file, std::atof(argv[3]), std::atof(argv[4]), argv[5]);
 
     brute_obj.parseFile(brute_obj.getFileName(), brute_obj.getIndex(), brute_obj.getValue());
 
@@ -93,6 +100,10 @@ void runParam(int argc, char* argv[])
     Cooley_tukey<double> cooley_obj(std::string(argv[1]), std::atof(argv[3]), std::atof(argv[4]), std::string(argv[5]));
 
     cooley_obj.parseFile(cooley_obj.getFileName(), cooley_obj.getIndex(), cooley_obj.getValue());
+  }
+  else
+  {
+    std::cout << "Neither" << std::endl;
   }
 }
 
