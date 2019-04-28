@@ -70,7 +70,7 @@ std::vector<complex<T>> temp;
 
 
 template<typename T>
-std::vector<complex<T>> Cooley_tukey<T>::FFT_REC(std::vector<complex<T>>& temp, int total_time)
+void Cooley_tukey<T>::FFT_REC(std::vector<complex<T>>& result, int total_time)
 {
 	// Check if it is split up enough
 	if (total_time >= 2)
@@ -83,8 +83,8 @@ odd.reserve(total_time/2);
 even.reserve(total_time/2);
 for (int i = 0; i < total_time / 2; i++)
 {
-    even.push_back(temp.at(i*2));
-    odd.push_back(temp.at(i*2+1));
+    even.push_back(result.at(i*2));
+    odd.push_back(result.at(i*2+1));
 }
 
 
@@ -95,12 +95,11 @@ for (int i = 0; i < total_time / 2; i++)
 
 			//Result of Cooley-Tukey algorithm:
 				//*This gives us the frequency values at certain times
-			temp.at(frequency) = even.at(frequency) + t;
-			temp.at(total_time / 2 + frequency) = even.at(frequency) - t;
+			result.at(frequency) = even.at(frequency) + t;
+			result.at(total_time / 2 + frequency) = even.at(frequency) - t;
 
 		}
 	}
-	return temp;
 }
 
 template class Cooley_tukey<double>;

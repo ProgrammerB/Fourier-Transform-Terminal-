@@ -24,7 +24,7 @@ class Cooley_tukey: public Fourier<T>
     //~Cooley_tukey();
 
     void FFT(const std::vector<T> &index, const std::vector<T> &value);
-    std::vector<complex<T>> FFT_REC(std::vector<complex<T>> &temp, int total_time); //recursion function for FFT
+    void FFT_REC(std::vector<complex<T>> &temp, int total_time); //recursion function for FFT
 
   private:
     int total_time;
