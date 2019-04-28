@@ -60,7 +60,6 @@ void Cooley_tukey<T>::FFT(std::vector<T>* index, std::vector<T>* value, std::vec
 	for (unsigned int time = 0; time < index->size(); time++)
 	{
 		result.push_back(index->at(time));
-		std::cout << result.at(time) << std::endl;
 		//temp.at(time) *= 1; // Window
 	}
 
