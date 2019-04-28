@@ -85,6 +85,8 @@ void runParam(int argc, char* argv[])
     brute_obj.parseFile(brute_obj.getFileName(), brute_obj.getIndex(), brute_obj.getValue());
 
     brute_obj.DFT(brute_obj.getIndex(), brute_obj.getValue(), brute_obj.getResult());
+
+    brute_obj.outputFile(brute_obj.getResult(), brute_obj.getFileName());
   }
   else if (argv[1] == COOLEY)
   {
