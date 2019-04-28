@@ -16,7 +16,7 @@ class Brute_force: public Fourier<T>
     Brute_force(std::string file_name, double frequency, double frequency_step, std::string output_name);
     //~Brute_force();
 
-    std::vector<complex<double>> DFT(const std::vector<double> &index,
+    void DFT(const std::vector<double> &index,
       const std::vector<double> &value,std::vector<complex<double>> &result);
 
 };
