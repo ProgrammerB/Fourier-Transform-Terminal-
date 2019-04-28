@@ -80,13 +80,15 @@ void runParam(int argc, char* argv[])
 
   if (argv[2] == BRUTE)
   {
-    Brute_force<double> brute_obj(file, 20.0, 20.0, output);
+    Brute_force<double> brute_obj(file, std::atof(argv[3]), std::atof(argv[4]), output);
 
-    parseFile(brute_obj.getFileName(), brute_obj.getIndex(), brute_obj.getValue());
+    brute_obj.parseFile(brute_obj.getFileName(), brute_obj.getIndex(), brute_obj.getValue());
   }
   else if (argv[1] == COOLEY)
   {
-    Cooley_tukey<double> cooley_obj(std::string(argv[1]), atof(argv[3]), atof(argv[4]), std::string(argv[5]));
+    Cooley_tukey<double> cooley_obj(std::string(argv[1]), std::atof(argv[3]), std::atof(argv[4]), std::string(argv[5]));
+
+    cooley_obj.parseFile(cooley_obj.getFileName(), cooley_obj.getIndex(), cooley_obj.getValue());
   }
 }
 

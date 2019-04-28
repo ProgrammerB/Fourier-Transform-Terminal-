@@ -9,7 +9,7 @@
 using std::complex;
 
 template<class T>
-class Brute_force: protected Fourier<T>
+class Brute_force: public Fourier<T>
 {
   public:
     Brute_force();

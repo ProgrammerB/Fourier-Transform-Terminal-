@@ -82,7 +82,7 @@ double Fourier<T>::getFrequencyStep(void) const
   @value - vector reference for storing the 2nd column in txt file  */
 
 template<typename T>
-void Fourier<T>::parseFile(std::string file_path, std::vector<double>& index, std::vector<double>& value)
+void Fourier<T>::parseFile(std::string file_path, std::vector<double>* index, std::vector<double>* value)
 {
   double time        = 0.0;
   double temperature = 0.0;
@@ -90,8 +90,8 @@ void Fourier<T>::parseFile(std::string file_path, std::vector<double>& index, st
 
   while(file >> time >> temperature)
   {
-    index.push_back(time);
-    value.push_back(temperature);
+    index->push_back(time);
+    value->push_back(temperature);
   }
 
   file.close();

@@ -16,7 +16,7 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 using std::complex;
 
 template<typename T>
-class Cooley_tukey: protected Fourier<T>
+class Cooley_tukey: public Fourier<T>
 {
   public:
     Cooley_tukey();
