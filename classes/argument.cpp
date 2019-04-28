@@ -81,6 +81,8 @@ void runParam(int argc, char* argv[])
   if (argv[2] == BRUTE)
   {
     Brute_force<double> brute_obj(file, 20.0, 20.0, output);
+
+    parseFile(brute_obj.getFileName(), brute_obj.getIndex(), brute_obj.getValue());
   }
   else if (argv[1] == COOLEY)
   {
