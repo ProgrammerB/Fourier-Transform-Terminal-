@@ -1,4 +1,4 @@
 Current supported algorithms:
 
-Brute force Discrete Transform
-Cooley Turkey
+Brute force - Discrete Fourier Transform
+Cooley Tukey - (Indiscrete) Fast Fourier Transform
