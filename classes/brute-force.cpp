@@ -41,10 +41,9 @@ Brute_force<T>::~Brute_force()
 */
 
 template<typename T>
-std::vector<complex<double>> Brute_force<T>::DFT(const std::vector<double> &index,
+void Brute_force<T>::DFT(const std::vector<double> &index,
    const std::vector<double> &value, std::vector<complex<double>> &result)
-{
-  std::vector<complex<double>> temp; //temporary complex<double> vector to be made equal to result
+{ 
 
   // For each output element
   for (size_t freq = 0; freq < index.size(); freq += this->frequency_step)
@@ -56,9 +55,8 @@ std::vector<complex<double>> Brute_force<T>::DFT(const std::vector<double> &inde
       double angle = 2 * M_PI * time * freq / index.size();
       sum = sum + index[time] * exp(-angle);
     }
-    temp.push_back(sum);
+    result.push_back(sum);
   }
-  return temp;
 }
 
 template class Brute_force<double>;
