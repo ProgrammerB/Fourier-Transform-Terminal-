@@ -103,7 +103,7 @@ void runParam(int argc, char* argv[])
 
     cooley_obj.parseFile(cooley_obj.getFileName(), cooley_obj.getIndex(), cooley_obj.getValue());
 
-    cooley_obj.FFT(cooley_obj.getIndex(), cooley_obj.getValue());
+    cooley_obj.FFT(cooley_obj.getIndex(), cooley_obj.getValue(), cooley_obj.getResult());
 
     cooley_obj.outputFile(cooley_obj.getResult(), cooley_obj.getOutputName());
   }
