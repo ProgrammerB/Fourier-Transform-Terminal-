@@ -87,13 +87,15 @@ void runParam(int argc, char* argv[])
 
   if (argv[2] == BRUTE)
   {
-    Brute_force<double> brute_obj(file, std::atof(argv[3]), std::atof(argv[4]), argv[5]);
+    Brute_force<double> brute_obj(file, std::atof(argv[3]), std::atof(argv[4]), output);
+    std::cout << argv[5] << std::endl;
+    std::cout << brute_obj.getOutputName() << std::endl;
 
     brute_obj.parseFile(brute_obj.getFileName(), brute_obj.getIndex(), brute_obj.getValue());
 
     brute_obj.DFT(brute_obj.getIndex(), brute_obj.getValue(), brute_obj.getResult());
 
-    brute_obj.outputFile(brute_obj.getResult(), brute_obj.getFileName());
+    brute_obj.outputFile(brute_obj.getResult(), brute_obj.getOutputName());
   }
   else if (argv[1] == COOLEY)
   {
