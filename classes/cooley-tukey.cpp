@@ -18,11 +18,12 @@ using std::complex;
 
 
 template<typename Iter, typename T>
-void FFT_REC(Iter first, Iter last, T data_type, double frequency_step, int total_time);
+void FFT_REC(Iter first, Iter last, T data_type, double frequency_step);
 
 
+//Cooley_tukey constructor, requires file_name, frequency_step, and output_name
 template<typename T>
-Cooley_tukey<T>::Cooley_tukey(std::string file_name, double frequency, double frequency_step, std::string output_name)
+Cooley_tukey<T>::Cooley_tukey(std::string file_name, double frequency_step, std::string output_name)
 {
 	this->file_name			 = file_name;
   this->frequency_step = frequency_step;
@@ -33,6 +34,11 @@ Cooley_tukey<T>::Cooley_tukey(std::string file_name, double frequency, double fr
 }
 
 
+/*Function converts weather data from vector<double> to vector<complex<double>>
+	and then starts the recursion process for Cooley_tukey
+	@param index - Time data
+	@param value - Weather data
+	@param &data - reference var to where output will be stored */
 template<typename T>
 void Cooley_tukey<T>::FFT(std::vector<T>* index, std::vector<T>* value, std::vector<complex<T>>& data)
 {
@@ -43,12 +49,19 @@ void Cooley_tukey<T>::FFT(std::vector<T>* index, std::vector<T>* value, std::vec
 	}
 
 	// Start recursion function to split up the tasks
-	FFT_REC(std::begin(data), std::end(data), data, this->frequency_step, this->value->size());
+	FFT_REC(std::begin(data), std::end(data), data, this->frequency_step);
 }
 
 
+/*Recursive function to do fourier analysis. Takes the data as an iterator
+	breaks the data into smaller pieces, and then calculates the fourier analysis
+	through several instances of the function call. Then stitches it back together
+	@param first - beginning of the vector
+	@param last - end of the vector
+	@param data_type - Used to keep the template from the Cooley_tukey Class
+	@param frequency - Resolution of the fourier analysis	*/
 template<typename Iter, typename T>
-void FFT_REC(Iter first, Iter last, T data_type, double frequency_step, int total_time)
+void FFT_REC(Iter first, Iter last, T data_type, double frequency_step)
 {
 	auto current_size = last - first;
 	// Check if it is split up enough
@@ -72,8 +85,8 @@ void FFT_REC(Iter first, Iter last, T data_type, double frequency_step, int tota
 
 		//Split on tasks
 		auto split = first + current_size / 2;
-		FFT_REC(first, split, data_type, frequency_step, total_time);
-		FFT_REC(split, last, data_type, frequency_step, total_time);
+		FFT_REC(first, split, data_type, frequency_step);
+		FFT_REC(split, last, data_type, frequency_step);
 
 		// DFT portion of FFT - calculates after everything has been split up through FFT_REC
 		for (int frequency = 0; frequency < current_size / 2; ++frequency)

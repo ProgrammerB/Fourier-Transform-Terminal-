@@ -103,7 +103,7 @@ void runParam(int argc, char* argv[])
     }
     else if (argv[2] == COOLEY)
     {
-      Cooley_tukey<double> cooley_obj(std::string(argv[1]), std::atof(argv[3]), std::atof(argv[4]), std::string(argv[5]));
+      Cooley_tukey<double> cooley_obj(std::string(argv[1]), std::atof(argv[3]), std::string(argv[4]));
 
       cooley_obj.parseFile(cooley_obj.getFileName(), cooley_obj.getIndex(), cooley_obj.getValue());
       cooley_obj.FFT(cooley_obj.getIndex(), cooley_obj.getValue(), cooley_obj.getData());
