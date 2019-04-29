@@ -31,6 +31,7 @@ Fourier<T>::Fourier(void)
 }
 
 
+//Base destructor, deallocates memory for index and value
 template<typename T>
 Fourier<T>::~Fourier(void)
 {
@@ -68,11 +69,14 @@ void Fourier<T>::parseFile(std::string file_path, std::vector<double>* index, st
     index->push_back(time);
     value->push_back(temperature);
   }
-
   file.close();
 }
 
 
+/*Takes the results of a fourier transform and outputs the raw data in a txt
+  file named using user inputted data
+  @param result - fourier analysis data
+  @param file_name - name for the outputted file, must end in .txt  */
 template<typename T>
 void Fourier<T>::outputFile(std::vector<complex<T>> result, std::string file_name)
 {
@@ -87,7 +91,6 @@ void Fourier<T>::outputFile(std::vector<complex<T>> result, std::string file_nam
       file << std::real(result.at(vector_index)) << " " << std::imag(result.at(vector_index)) << '\n';
     }
   }
-
   file.close();
 }
 

@@ -6,8 +6,8 @@
 Copyright(c) 2019 Braxton Laster & Ben Rader
 */
 
-#include "Cooley-tukey.h"
 #include "fourier_algorithm.h"
+#include "Cooley-tukey.h"
 #include <string>
 #include <vector>
 #include <complex>
@@ -56,10 +56,7 @@ void FFT_REC(Iter first, Iter last, T data_type, double frequency_step, int tota
 	{
 		// Split even and odds up
 		std::vector<complex<double>> odd;
-		//std::vector<complex<T>> even;
-
 		odd.resize(current_size / 2);
-		//even.resize(total_time/2);
 
 		for (int i = 0; i < (current_size / 2); ++i)
 		{
@@ -67,6 +64,7 @@ void FFT_REC(Iter first, Iter last, T data_type, double frequency_step, int tota
 				first[i] 		= first[i * 2];
 		}
 
+		//Takes the odd half and just adds it to the 2nd half of vector
 		for (int i = 0; i < current_size / 2; ++i)
 		{
 				first[i + current_size / 2] = odd.at(i);
@@ -82,14 +80,11 @@ void FFT_REC(Iter first, Iter last, T data_type, double frequency_step, int tota
 		{
 			auto t = std::exp(std::complex<double>(0, -2.0 * M_PI * frequency / current_size));
 
-
 			//Result of Cooley-Tukey algorithm:
-			//*This gives us the frequency values at certain times
 			auto& bottom 	= first[frequency];
 			auto& top 		= first[frequency + current_size / 2];
 			top 					= bottom - t * top;
 			bottom 				-= top - bottom;
-
 		}
 	}
 }

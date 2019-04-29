@@ -85,6 +85,10 @@ void parseParam(int argc, char* argv[])
 }
 
 
+/*If REQUIRED_ARGS is met, then parse the cmd line data into objects based
+  on said input.
+  @param argc - num of user arguments
+  @param argv[4] - String of said arguments */
 void runParam(int argc, char* argv[])
 {
   try

@@ -6,8 +6,8 @@
 Copyright(c) 2019 Braxton Laster & Ben Rader
 */
 
-#include "brute-force.h"
 #include "fourier_algorithm.h"
+#include "brute-force.h"
 #include <complex>
 #include <vector>
 #include <algorithm>
@@ -17,6 +17,11 @@ using std::complex;
 using std::exp;
 
 
+/*Brute_force constructor, requires file_name, frequency_step, and output_name
+  to create obj
+  @param file_name - Name of the file to parse data from
+  @param frequency_step - 'Resolution' of fourier transform
+  @param output_name - Name of the file to export results to  */
 template<typename T>
 Brute_force<T>::Brute_force(std::string file_name, double frequency_step, std::string output_name)
 {

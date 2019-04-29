@@ -9,10 +9,10 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 #ifndef BRUTEFORCE_H
 #define BRUTEFORCE_H
 
-#include "fourier_algorithm.h"
 #include <vector>
 #include <complex>
 #include <string>
+#include "fourier_algorithm.h"
 using std::complex;
 
 
