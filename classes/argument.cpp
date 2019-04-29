@@ -16,6 +16,7 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 #include "argument.h"
 #include "cooley-tukey.h"
 #include "brute-force.h"
+#include "fourier_test.h"
 using std::complex;
 
 const int REQUIRED_ARGS     = 5; // Args needed for the program fully run
@@ -24,6 +25,7 @@ const std::string HELP      = "-help"; // String literal for the '-help' option
 const std::string LIST      = "-list"; // String literal for the '-list' option
 const std::string COOLEY    = "cooley_tukey"; // String literal for the 'cooley_tukey' algorithm option
 const std::string BRUTE     = "brute_force"; // String literal for 'brute_force' algorithm option
+const std::string UNIT_TEST = "-unit_test"; // If selected, runs built-in unit test
 const std::string TEXT_DIRECTORY = "text_files\\"; // Directory for text files
 const std::string HELP_PATH = TEXT_DIRECTORY + "helpMenu.txt";
 const std::string LIST_PATH = TEXT_DIRECTORY + "listMenu.txt";
@@ -133,6 +135,10 @@ void runUniqueParam(std::string parameter)
   else if(parameter == LIST)
   {
     printFile(LIST_PATH);
+  }
+  else if(parameter == UNIT_TEST)
+  {
+    FOURIER_TEST();
   }
 }
 

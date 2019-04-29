@@ -57,14 +57,16 @@ std::vector<double>* makeValueVector(void)
   srand (time(NULL));
   double rand_num = static_cast<double>(rand() % RAND_RANGE + 1);
 
-  for(int index = 0; index < SAMPLE_SIZE; index++){
+  for(int index = 0; index < SAMPLE_SIZE; index++)
+  {
     sample_vector_value->push_back(rand_num);
     rand_num = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / RAND_RANGE));
   }
   return sample_vector_value;
 }
 
-void FOURIER_TEST(void){
+void FOURIER_TEST(void)
+{
   //complex vectors which will be used as references
   std::vector<complex<double>> cooley_ref;
   std::vector<complex<double>> brute_ref;
@@ -81,7 +83,8 @@ void FOURIER_TEST(void){
   int num_true = 0;
   for(int i = 0; i < SAMPLE_SIZE; i++)
   {
-    if(compare_complex(cooley_ref.at(i), brute_ref.at(i))){
+    if(compare_complex(cooley_ref.at(i), brute_ref.at(i)))
+    {
       num_true++;
     }
   }
