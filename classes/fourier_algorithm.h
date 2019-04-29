@@ -20,29 +20,27 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 #include <fstream>
 using std::complex;
 
+
 template<typename T>
 class Fourier
 {
   public:
-    Fourier();
+    Fourier(void);
     ~Fourier(void); //makes Fourier class our "abstract" Base class
 
-    void setFrequency    (double frequency);
     void setFrequencyStep(double frequency_step);
 
-    double getFrequency    (void) const;
-    double getFrequencyStep(void) const;
-    std::string getFileName(void) {return file_name; }
-    std::string getOutputName(void) {return output_name; }
-    std::vector<T>* getIndex(void) {return index; }
-    std::vector<T>* getValue(void) {return value; }
+    double getFrequencyStep(void)   const {return frequency_step; }
+    std::string getFileName(void)   const {return file_name; }
+    std::string getOutputName(void) const {return output_name; }
+    std::vector<T>* getIndex(void)  const {return index; }
+    std::vector<T>* getValue(void)  const {return value; }
     std::vector<complex<T>>& getResult(void) {return result; }
 
     void parseFile (std::string file_path, std::vector<double>* index, std::vector<double>* value);
     void outputFile(std::vector<complex<T>> result, std::string file_name = "result.txt");
 
   protected:
-    double frequency;
     double frequency_step;
     std::vector<complex<T>> result;
     std::vector<T>* index;

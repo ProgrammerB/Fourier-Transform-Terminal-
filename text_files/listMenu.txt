@@ -1,4 +1,4 @@
 Current supported algorithms:
 
 Brute force - Discrete Fourier Transform
-Cooley Tukey - (Indiscrete) Fast Fourier Transform
+Cooley Tukey - (Indiscrete) Fast Fourier Transform [NOTE: Must have some power of 2 # of samples]

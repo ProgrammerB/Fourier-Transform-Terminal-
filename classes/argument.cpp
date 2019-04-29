@@ -18,7 +18,7 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 #include "brute-force.h"
 using std::complex;
 
-const int REQUIRED_ARGS     = 6; // Args needed for the program fully run
+const int REQUIRED_ARGS     = 5; // Args needed for the program fully run
 const int MIN_ARGS          = 2; // Minimum args needed to access the program
 const std::string HELP      = "-help"; // String literal for the '-help' option
 const std::string LIST      = "-list"; // String literal for the '-list' option
@@ -73,47 +73,46 @@ void parseParam(int argc, char* argv[])
     {
       runParam(argc, argv);
     }
+    else
+    {
+      throw std::runtime_error("ERROR: Issue parsing inputted paramters");
+    }
   }
   catch(std::runtime_error& exception)
   {
-    std::cerr << "ERROR: Issue parsing inputted paramters" << std::endl;
+    std::cerr << exception.what() << std::endl;
   }
 }
 
 
 void runParam(int argc, char* argv[])
 {
-  std::string file(argv[1]);
-  std::string output(argv[5]);
-
-  if (argv[2] == BRUTE)
+  try
   {
-    Brute_force<double> brute_obj(file, std::atof(argv[3]), std::atof(argv[4]), output);
-    std::cout << argv[5] << std::endl;
-    std::cout << brute_obj.getOutputName() << std::endl;
+    if (argv[2] == BRUTE)
+    {
+      Brute_force<double> brute_obj(argv[1], std::atof(argv[3]), argv[4]);
 
-    brute_obj.parseFile(brute_obj.getFileName(), brute_obj.getIndex(), brute_obj.getValue());
+      brute_obj.parseFile(brute_obj.getFileName(), brute_obj.getIndex(), brute_obj.getValue());
+      brute_obj.DFT(brute_obj.getIndex(), brute_obj.getValue(), brute_obj.getResult());
+      brute_obj.outputFile(brute_obj.getResult(), brute_obj.getOutputName());
+    }
+    else if (argv[2] == COOLEY)
+    {
+      Cooley_tukey<double> cooley_obj(std::string(argv[1]), std::atof(argv[3]), std::atof(argv[4]), std::string(argv[5]));
 
-    brute_obj.DFT(brute_obj.getIndex(), brute_obj.getValue(), brute_obj.getResult());
-
-    brute_obj.outputFile(brute_obj.getResult(), brute_obj.getOutputName());
+      cooley_obj.parseFile(cooley_obj.getFileName(), cooley_obj.getIndex(), cooley_obj.getValue());
+      cooley_obj.FFT(cooley_obj.getIndex(), cooley_obj.getValue(), cooley_obj.getData());
+      cooley_obj.outputFile(cooley_obj.getData(), cooley_obj.getOutputName());
+    }
+    else
+    {
+      throw std::runtime_error("ERROR: No compatible algorithm selected");
+    }
   }
-  else if (argv[2] == COOLEY)
+  catch(std::runtime_error& exception)
   {
-    Cooley_tukey<double> cooley_obj(std::string(argv[1]), std::atof(argv[3]), std::atof(argv[4]), std::string(argv[5]));
-
-    cooley_obj.parseFile(cooley_obj.getFileName(), cooley_obj.getIndex(), cooley_obj.getValue());
-
-    std::cout << "made it to fft \n";
-    cooley_obj.FFT(cooley_obj.getIndex(), cooley_obj.getValue(), cooley_obj.getData());
-    //cooley_obj.FFT_REC(std::begin(this->value), std::end(this->value));
-
-    std::cout << "made it to outputfile \n";
-    cooley_obj.outputFile(cooley_obj.getData(), cooley_obj.getOutputName());
-  }
-  else
-  {
-    std::cout << "Neither" << std::endl;
+    std::cerr << exception.what() << std::endl;
   }
 }
 
@@ -134,8 +133,8 @@ void runUniqueParam(std::string parameter)
 }
 
 
-/*Receives an ifstream object and prints its contents. Mainly to be used for
-  testing purposes.
+/*Receives an ifstream object and prints its contents. Used to print menus
+  stored in txt file format.
   @param file - text file to print
   @example  - printFile(file) @output: "Hello World\n"  */
 void printFile(std::string file_path)
@@ -151,20 +150,4 @@ void printFile(std::string file_path)
     }
     file.close();
   }
-}
-
-
-void parseFile(std::string file_path, std::vector<double>& index, std::vector<double>& value)
-{
-  double time = 0.0;
-  double temperature = 0.0;
-  std::ifstream file(file_path);
-
-  while(file >> time >> temperature)
-  {
-    index.push_back(time);
-    value.push_back(temperature);
-  }
-
-  file.close();
 }
