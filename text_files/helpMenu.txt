@@ -7,7 +7,7 @@ Example
 FOURIER.exe file.txt brute_force 3 weather.txt
 
 Options
-FOURIER.exe [-help][-list]
+FOURIER.exe [-help][-list][-unit_test]
 
     File Name           Name of the file that had the data to apply
                         the fourier algorithm to
@@ -18,3 +18,4 @@ FOURIER.exe [-help][-list]
 
     -help               List menu options and example usage
     -list               List available Fourier Algorithms
+    -unit_test          Runs built-in unit testing
