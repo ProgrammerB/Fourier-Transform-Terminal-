@@ -72,23 +72,23 @@ template<typename T>
 void Cooley_tukey<T>::FFT_REC(std::vector<complex<T>>& result, int total_time)
 {
 	// Check if it is split up enough
-	if (this->index->size() > 1)
+	if (total_time > 1)
 	{
-
 		// Split even and odds up
-std::vector<complex<T>> odd;
-std::vector<complex<T>> even;
-odd.reserve(total_time/2);
-even.reserve(total_time/2);
-for (int i = 0; i < total_time / 2; i++)
-{
-    even.push_back(result.at(i*2));
-    odd.push_back(result.at(i*2+1));
-}
+		std::vector<complex<T>> odd;
+		std::vector<complex<T>> even;
+		odd.reserve(total_time/2);
+		even.reserve(total_time/2);
+		for (int i = 0; i < total_time / 2; i++)
+		{
+		    even.push_back(result.at(i*2));
+		    odd.push_back(result.at(i*2+1));
+		}
 
-//Split on tasks
-FFT_REC(even, total_time/2);
-FFT_REC(odd, total_time/2);
+
+		//Split on tasks
+		FFT_REC(even, total_time/2);
+		FFT_REC(odd, total_time/2);
 
 		// DFT portion of FFT - calculates after everything has been split up through FFT_REC
 		for (int frequency = 0; frequency < total_time / 2; frequency += this->frequency_step)

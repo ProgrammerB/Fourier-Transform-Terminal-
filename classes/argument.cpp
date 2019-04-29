@@ -103,8 +103,10 @@ void runParam(int argc, char* argv[])
 
     cooley_obj.parseFile(cooley_obj.getFileName(), cooley_obj.getIndex(), cooley_obj.getValue());
 
+    std::cout << "made it to fft \n";
     cooley_obj.FFT(cooley_obj.getIndex(), cooley_obj.getValue(), cooley_obj.getResult());
 
+    std::cout << "made it to outputfile \n";
     cooley_obj.outputFile(cooley_obj.getResult(), cooley_obj.getOutputName());
   }
   else
