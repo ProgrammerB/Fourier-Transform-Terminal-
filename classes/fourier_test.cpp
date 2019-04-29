@@ -17,6 +17,7 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 #include <vector>
 #include <typeinfo>
 #include <stdlib.h>
+#include <iomanip>
 #include "argument.h"
 
 #define EPSILON .00001
@@ -88,10 +89,21 @@ void FOURIER_TEST(void)
       num_true++;
     }
   }
+
+  std::cout << std::right << std::setw(16) << "Index" << std::setw(16) << "Cooley"
+            << std::setw(16) << "Brute_force" << std::setw(16) << "Difference"
+            <<std::endl;
+  for (size_t i = 0; i < SAMPLE_SIZE; ++i)
+  {
+    std::cout << std::setw(16) << i << std::setw(16) << std::abs(cooley_ref.at(i))
+              << std::setw(16) << std::abs(brute_ref.at(i)) << std::setw(16)
+              << (std::abs(cooley_ref.at(i)) - std::abs(brute_ref.at(i))) << std::endl;
+  }
+
   if(num_true / SAMPLE_SIZE == 1)
   {
     std::cout << "------------------------------------------------------------------" << std::endl;
-    std::cout << "FOURIER_TEST: testing'(Equality of Cooley-tukey and Brute-force)'" << std::endl;
+    std::cout << "FOURIER_TEST: testing'(Accuracy of Cooley-tukey and Brute-force)'" << std::endl;
     std::cout << "      Result:  SUCCESS                                            " << std::endl;
     std::cout << "------------------------------------------------------------------\n\n" << std::endl;
   }
@@ -103,44 +115,3 @@ void FOURIER_TEST(void)
     std::cout << "------------------------------------------------------------------\n\n" << std::endl;
   }
 }
-
-
-
-//_____________________________________________________________
-//**COMMENTED OUT CONSTRUCTION ZONE
-//*
-//*
-/*
-
-
-**
-TODO:://Implement Unit testing with randomly
-  generated txt files
-**
-
-
-int num_true = 0;
-for(int i = 0; i < index->size(), i++)
-{
-  BOOST_CHECK_CLOSE(,,.0001);
-  num_true++;
-}
-if(num_true/1024 == 1)
-{
-  cout<<"Cooley-Tukey & Brute-Force give same result"<<endl;
-}
-*/
-
-//Somehow compare the cooley-tukey and brute-force answers
-  //*This means it is significantly probable that
-    //both fourier algorithms are calculating
-    //correctly because they are getting the
-    //same value through different methods
-
-//control file will be a file with already "transformed" data
-  //*control data will be obtained from an already tested fourier analyzer
-    //This will compare both and if they are relatively the same
-    //then success is assumed.
-
-//below can be syntax for txt file based unit testing
-//void TEST_CALL(std::string control_file, std::string test_file)
