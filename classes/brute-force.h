@@ -20,6 +20,7 @@ template<typename T>
 class Brute_force: public Fourier<T>
 {
   public:
+    Brute_force();
     Brute_force(std::string file_name, double frequency_step, std::string output_name);
 
     void DFT(std::vector<double>* index,

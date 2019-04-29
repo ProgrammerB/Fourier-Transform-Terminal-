@@ -3,8 +3,10 @@
 #include "cooley-tukey.h"
 #include <random>
 #include <cstdbool>
+#include <iostream>
 #define EPSILON .00001
 using std::complex;
+
 
 bool compare_complex (complex<double> A, complex<double> B)
 {
@@ -16,40 +18,58 @@ bool compare_complex (complex<double> A, complex<double> B)
 
 //time vector generation
   //maybe make max and min rand inside some large interval
-std::vector<double> sample_vector_time;
-int i;
-for(i = 1; i < 1024; i++){
-  sample_vector.at(i - min) = i;
+std::vector<double> makeTimeVector(void)
+{
+  std::vector<double> sample_vector_time;
+  int i;
+  for(i = 1; i < 1024; i++){
+    sample_vector_time.at(i - 1) = i;
+  }
+  return sample_vector_time;
 }
+
 //..
 //amplitude/temperature vector generation
-std::vector<double> sample_vector_value;
-srand (time(NULL));
-double rand_num = (double)rand() % 500 + 1;
-int index;
-for(index = 1; index < 1024; index++){
-  sample_vector_value.at(i - min) = i;
-  rand_num = (double)rand() % 500 + 1;
+std::vector<double> makeValueVector(void)
+{
+  std::vector<double> sample_vector_value;
+  srand (time(NULL));
+  double rand_num = static_cast<double>(rand() % 500 + 1);
+  int index;
+  for(index = 1; index < 1024; index++){
+    sample_vector_value.at(index - 1) = rand_num;
+    rand_num = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX/500));
+  }
+  return sample_vector_value;
 }
 
-std::vector<complex<double>> cooley;
-std::vector<complex<double>> brute;
+void FOURIER_TEST(void){
+  //complex vectors which will be used as references
+  std::vector<complex<double>> cooley_ref;
+  std::vector<complex<double>> brute_ref;
 
-DFT(sample_vector_time, sample_vector_value, brute);
-FFT(sample_vector_time, sample_vector_value, cooley);
+  //created cooley-tukey and brute force objects
+  Brute_force<double> brute();
+  Cooley_tukey<double> cooley();
+
+  brute.DFT(makeTimeVector, makeValueVector, brute_ref);
+  cooley.FFT(makeTimeVector, makeValueVector, cooley_ref);
 
 
-//Compares the vectors side by side (real and imag)
-for(int i = 0; i < index->size(), i++)
-{
-  if(compare_complex(cooley,brute)){
-    num_true++;
+  //Compares the vectors side by side (real and imag)
+  int i;
+  for(i = 0; i < 1024, i++)
+  {
+    if(compare_complex(cooley_ref.at(i),brute_ref.at(i))){
+      num_true++;
+    }
+  }
+  if(num_true/1024 == 1)
+  {
+    cout<<"Cooley-Tukey & Brute-Force give same result"<<endl;
   }
 }
-if(num_true/1024 == 1)
-{
-  cout<<"Cooley-Tukey & Brute-Force give same result"<<endl;
-}
+
 
 
 //_____________________________________________________________

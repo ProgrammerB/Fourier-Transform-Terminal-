@@ -16,6 +16,16 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 using std::complex;
 using std::exp;
 
+//Default constructor-used with tests
+template <typename T>
+Brute_force<T>::Brute_force()
+{
+  this->frequency_step  = 1;
+  this->output_name     = "default-Brute-force";
+
+  this->index = new std::vector<double>;
+  this->value = new std::vector<double>;
+}
 
 /*Brute_force constructor, requires file_name, frequency_step, and output_name
   to create obj

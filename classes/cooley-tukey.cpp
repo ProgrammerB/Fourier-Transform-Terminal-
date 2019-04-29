@@ -20,6 +20,16 @@ using std::complex;
 template<typename Iter, typename T>
 void FFT_REC(Iter first, Iter last, T data_type, double frequency_step);
 
+//Cooley-tukey default constructor - used mainly with unit test
+template <typename T>
+Cooley_tukey<T>::Cooley_tukey()
+{
+  this->frequency_step  = 1;
+  this->output_name     = "default-Cooley-tukey";
+
+  this->index = new std::vector<double>;
+  this->value = new std::vector<double>;
+}
 
 //Cooley_tukey constructor, requires file_name, frequency_step, and output_name
 template<typename T>
