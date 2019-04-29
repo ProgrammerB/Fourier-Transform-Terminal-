@@ -39,7 +39,7 @@ Brute_force<T>::~Brute_force()
   value = nullptr;
 }
 */
-/*
+
 template<typename T>
 void Brute_force<T>::DFT(std::vector<double>* index,
     std::vector<double>* value, std::vector<complex<double>> &result)
@@ -53,24 +53,10 @@ void Brute_force<T>::DFT(std::vector<double>* index,
     for (size_t time = 0; time < index->size(); time++)
     {
       double angle = (2 * M_PI * time * freq) / index->size();
-      sum = sum + index->at(time) * std::exp(std::complex<T>(0, -angle));
+      sum = sum + value->at(time) * std::exp(std::complex<T>(0, -angle));
     }
     result.push_back(sum);
   }
 }
 
 template class Brute_force<double>;
-*/
-std::vector<complex<double>> Brute_force<T>::DFT(const vector<complex<double> > &input) {
-	vector<complex<double> > output;
-	size_t n = input.size();
-	for (size_t k = 0; k < n; k++) {  // For each output element
-		complex<double> sum(0.0, 0.0);
-		for (size_t t = 0; t < n; t++) {  // For each input element
-			double angle = 2 * M_PI * t * k / n;
-			sum += input[t] * exp(-angle);
-		}
-		output.push_back(sum);
-	}
-	return output;
-}
