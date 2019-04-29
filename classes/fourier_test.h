@@ -9,6 +9,8 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 #ifndef TEST
 #define TEST
 
+#include <vector>
+
 bool compare_complex (complex<double> A, complex<double> B);
 
 std::vector<double>* makeTimeVector(void);
