@@ -95,6 +95,13 @@ void FOURIER_TEST(void)
     std::cout << "      Result:  SUCCESS                                            " << std::endl;
     std::cout << "------------------------------------------------------------------\n\n" << std::endl;
   }
+  else
+  {
+    std::cout << "------------------------------------------------------------------" << std::endl;
+    std::cout << "FOURIER_TEST: testing'(Equality of Cooley-tukey and Brute-force)'" << std::endl;
+    std::cout << "      Result:  FAILURE                                            " << std::endl;
+    std::cout << "------------------------------------------------------------------\n\n" << std::endl;
+  }
 }
 
 
