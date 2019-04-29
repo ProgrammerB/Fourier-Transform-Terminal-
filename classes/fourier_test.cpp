@@ -1,9 +1,17 @@
-#include "fourier_algorithm.h"
+
 #include "brute-force.h"
 #include "cooley-tukey.h"
 #include <random>
 #include <cstdbool>
 #include <iostream>
+#include <fstream>
+#include <exception>
+#include <string>
+#include <vector>
+#include <typeinfo>
+#include <stdlib.h>
+#include "argument.h"
+
 #define EPSILON .00001
 using std::complex;
 
@@ -20,19 +28,19 @@ bool compare_complex (complex<double> A, complex<double> B)
   //maybe make max and min rand inside some large interval
 std::vector<double> makeTimeVector(void)
 {
-  std::vector<double> sample_vector_time;
+  std::vector<double>* sample_vector_time;
   int i;
   for(i = 1; i < 1024; i++){
     sample_vector_time.at(i - 1) = i;
   }
-  return sample_vector_time;
+  return *sample_vector_time;
 }
 
 //..
 //amplitude/temperature vector generation
 std::vector<double> makeValueVector(void)
 {
-  std::vector<double> sample_vector_value;
+  std::vector<double>* sample_vector_value;
   srand (time(NULL));
   double rand_num = static_cast<double>(rand() % 500 + 1);
   int index;
@@ -40,7 +48,7 @@ std::vector<double> makeValueVector(void)
     sample_vector_value.at(index - 1) = rand_num;
     rand_num = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX/500));
   }
-  return sample_vector_value;
+  return *sample_vector_value;
 }
 
 void FOURIER_TEST(void){
@@ -52,13 +60,14 @@ void FOURIER_TEST(void){
   Brute_force<double> brute();
   Cooley_tukey<double> cooley();
 
-  brute.DFT(makeTimeVector, makeValueVector, brute_ref);
-  cooley.FFT(makeTimeVector, makeValueVector, cooley_ref);
+  brute.DFT(makeTimeVector, makeValueVector, &brute_ref);
+  cooley.FFT(makeTimeVector, makeValueVector, &cooley_ref);
 
 
   //Compares the vectors side by side (real and imag)
   int i;
-  for(i = 0; i < 1024, i++)
+  int num_true = 0;
+  for(i = 0; i < 1024; i++)
   {
     if(compare_complex(cooley_ref.at(i),brute_ref.at(i))){
       num_true++;
@@ -66,7 +75,7 @@ void FOURIER_TEST(void){
   }
   if(num_true/1024 == 1)
   {
-    cout<<"Cooley-Tukey & Brute-Force give same result"<<endl;
+    std::cout<<"Cooley-Tukey & Brute-Force give same result"<<std::endl;
   }
 }
 
