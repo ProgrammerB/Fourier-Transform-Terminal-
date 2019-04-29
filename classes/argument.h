@@ -10,8 +10,8 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 #define ARGUMENT_H
 
 bool checkNumParam(int argc);
-void parseParam(int argc, char* argv[]);
 
+void parseParam(int argc, char* argv[]);
 void runParam(int argc, char* argv[]);
 void runUniqueParam(std::string parameter);
 void printFile(std::string file_path);
