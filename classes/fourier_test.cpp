@@ -1,3 +1,10 @@
+/*
+@file: main.cpp
+@desc: Header file for the cooley-tukey FFT algorithm
+@date: 3/7/19
+
+Copyright(c) 2019 Braxton Laster & Ben Rader
+*/
 
 #include "brute-force.h"
 #include "cooley-tukey.h"
@@ -80,7 +87,10 @@ void FOURIER_TEST(void){
   }
   if(num_true / SAMPLE_SIZE == 1)
   {
-    std::cout << "Cooley-Tukey & Brute-Force give same result" << std::endl;
+    std::cout << "------------------------------------------------------------------" << std::endl;
+    std::cout << "FOURIER_TEST: testing'(Equality of Cooley-tukey and Brute-force)'" << std::endl;
+    std::cout << "      Result:  SUCCESS                                            " << std::endl;
+    std::cout << "------------------------------------------------------------------\n\n" << std::endl;
   }
 }
 
