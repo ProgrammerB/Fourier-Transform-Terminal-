@@ -15,6 +15,9 @@
 #define EPSILON .00001
 using std::complex;
 
+const int SAMPLE_SIZE = 1024; //Artifical size of the sample txt
+const int RAND_RANGE  = 500;  //Random number range from 0 to N
+
 
 bool compare_complex (complex<double> A, complex<double> B)
 {
@@ -25,13 +28,13 @@ bool compare_complex (complex<double> A, complex<double> B)
 }
 
 //time vector generation
-  //maybe make max and min rand inside some large interval
+//maybe make max and min rand inside some large interval
 std::vector<double>* makeTimeVector(void)
 {
   std::vector<double>* sample_vector_time;
   sample_vector_time = new std::vector<double>;
 
-  for(int i = 0; i < 1024; i++){
+  for(int i = 0; i < SAMPLE_SIZE; i++){
     sample_vector_time->push_back(i);
   }
   return sample_vector_time;
@@ -45,11 +48,11 @@ std::vector<double>* makeValueVector(void)
   sample_vector_value = new std::vector<double>;
 
   srand (time(NULL));
-  double rand_num = static_cast<double>(rand() % 500 + 1);
+  double rand_num = static_cast<double>(rand() % RAND_RANGE + 1);
 
-  for(int index = 0; index < 1024; index++){
+  for(int index = 0; index < SAMPLE_SIZE; index++){
     sample_vector_value->push_back(rand_num);
-    rand_num = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX/500));
+    rand_num = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / RAND_RANGE));
   }
   return sample_vector_value;
 }
@@ -69,13 +72,13 @@ void FOURIER_TEST(void){
 
   //Compares the vectors side by side (real and imag)
   int num_true = 0;
-  for(int i = 0; i < 1024; i++)
+  for(int i = 0; i < SAMPLE_SIZE; i++)
   {
     if(compare_complex(cooley_ref.at(i), brute_ref.at(i))){
       num_true++;
     }
   }
-  if(num_true / 1024 == 1)
+  if(num_true / SAMPLE_SIZE == 1)
   {
     std::cout << "Cooley-Tukey & Brute-Force give same result" << std::endl;
   }
