@@ -26,29 +26,32 @@ bool compare_complex (complex<double> A, complex<double> B)
 
 //time vector generation
   //maybe make max and min rand inside some large interval
-std::vector<double> makeTimeVector(void)
+std::vector<double>* makeTimeVector(void)
 {
   std::vector<double>* sample_vector_time;
-  int i;
-  for(i = 1; i < 1024; i++){
-    sample_vector_time.at(i - 1) = i;
+  sample_vector_time = new std::vector<double>;
+
+  for(int i = 0; i < 1024; i++){
+    sample_vector_time->push_back(i);
   }
-  return *sample_vector_time;
+  return sample_vector_time;
 }
 
 //..
 //amplitude/temperature vector generation
-std::vector<double> makeValueVector(void)
+std::vector<double>* makeValueVector(void)
 {
   std::vector<double>* sample_vector_value;
+  sample_vector_value = new std::vector<double>;
+
   srand (time(NULL));
   double rand_num = static_cast<double>(rand() % 500 + 1);
-  int index;
-  for(index = 1; index < 1024; index++){
-    sample_vector_value.at(index - 1) = rand_num;
+
+  for(int index = 0; index < 1024; index++){
+    sample_vector_value->push_back(rand_num);
     rand_num = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX/500));
   }
-  return *sample_vector_value;
+  return sample_vector_value;
 }
 
 void FOURIER_TEST(void){
@@ -57,25 +60,24 @@ void FOURIER_TEST(void){
   std::vector<complex<double>> brute_ref;
 
   //created cooley-tukey and brute force objects
-  Brute_force<double> brute();
-  Cooley_tukey<double> cooley();
+  Brute_force<double> brute{};
+  Cooley_tukey<double> cooley{};
 
-  brute.DFT(makeTimeVector, makeValueVector, &brute_ref);
-  cooley.FFT(makeTimeVector, makeValueVector, &cooley_ref);
+  brute.DFT(makeTimeVector(), makeValueVector(), brute_ref);
+  cooley.FFT(makeTimeVector(), makeValueVector(), cooley_ref);
 
 
   //Compares the vectors side by side (real and imag)
-  int i;
   int num_true = 0;
-  for(i = 0; i < 1024; i++)
+  for(int i = 0; i < 1024; i++)
   {
-    if(compare_complex(cooley_ref.at(i),brute_ref.at(i))){
+    if(compare_complex(cooley_ref.at(i), brute_ref.at(i))){
       num_true++;
     }
   }
-  if(num_true/1024 == 1)
+  if(num_true / 1024 == 1)
   {
-    std::cout<<"Cooley-Tukey & Brute-Force give same result"<<std::endl;
+    std::cout << "Cooley-Tukey & Brute-Force give same result" << std::endl;
   }
 }
 
