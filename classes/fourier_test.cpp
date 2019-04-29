@@ -90,6 +90,7 @@ void FOURIER_TEST(void)
     }
   }
 
+  //Prints out the data from cooley and brute side-by-side with the difference
   std::cout << std::right << std::setw(16) << "Index" << std::setw(16) << "Cooley"
             << std::setw(16) << "Brute_force" << std::setw(16) << "Difference"
             <<std::endl;
@@ -100,6 +101,7 @@ void FOURIER_TEST(void)
               << (std::abs(cooley_ref.at(i)) - std::abs(brute_ref.at(i))) << std::endl;
   }
 
+  //If they're all within margin of error, print success
   if(num_true / SAMPLE_SIZE == 1)
   {
     std::cout << "------------------------------------------------------------------" << std::endl;
