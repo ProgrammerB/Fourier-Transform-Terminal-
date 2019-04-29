@@ -16,6 +16,7 @@ Copyright(c) 2019 Braxton Laster & Ben Rader
 #include "argument.h"
 #include "cooley-tukey.h"
 #include "brute-force.h"
+using std::complex;
 
 const int REQUIRED_ARGS     = 6; // Args needed for the program fully run
 const int MIN_ARGS          = 2; // Minimum args needed to access the program
@@ -104,10 +105,11 @@ void runParam(int argc, char* argv[])
     cooley_obj.parseFile(cooley_obj.getFileName(), cooley_obj.getIndex(), cooley_obj.getValue());
 
     std::cout << "made it to fft \n";
-    cooley_obj.FFT(cooley_obj.getIndex(), cooley_obj.getValue(), cooley_obj.getResult());
+    cooley_obj.FFT(cooley_obj.getIndex(), cooley_obj.getValue(), cooley_obj.getData());
+    //cooley_obj.FFT_REC(std::begin(this->value), std::end(this->value));
 
     std::cout << "made it to outputfile \n";
-    cooley_obj.outputFile(cooley_obj.getResult(), cooley_obj.getOutputName());
+    cooley_obj.outputFile(cooley_obj.getData(), cooley_obj.getOutputName());
   }
   else
   {
