@@ -60,7 +60,7 @@ void Cooley_tukey<T>::FFT(std::vector<T>* index, std::vector<T>* value, std::vec
 	for (unsigned int time = 0; time < index->size(); time++)
 	{
 		result.push_back(index->at(time));
-		//temp.at(time) *= 1; // Window
+		result.at(time) *= 1; //Window
 	}
 
 	// Start recursion function to split up the tasks
@@ -72,7 +72,7 @@ template<typename T>
 void Cooley_tukey<T>::FFT_REC(std::vector<complex<T>>& result, int total_time)
 {
 	// Check if it is split up enough
-	if (total_time >= 2)
+	if (this->index->size() > 1)
 	{
 
 		// Split even and odds up
@@ -86,6 +86,9 @@ for (int i = 0; i < total_time / 2; i++)
     odd.push_back(result.at(i*2+1));
 }
 
+//Split on tasks
+FFT_REC(even, total_time/2);
+FFT_REC(odd, total_time/2);
 
 		// DFT portion of FFT - calculates after everything has been split up through FFT_REC
 		for (int frequency = 0; frequency < total_time / 2; frequency += this->frequency_step)
