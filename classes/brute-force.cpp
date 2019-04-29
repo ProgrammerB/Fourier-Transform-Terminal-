@@ -52,8 +52,8 @@ void Brute_force<T>::DFT(std::vector<double>* index,
     // For each input element
     for (size_t time = 0; time < index->size(); time++)
     {
-      double angle = 2 * M_PI * time * freq / index->size();
-      sum = sum + index->at(time) * std::exp(std::complex<double>{0,-angle});
+      double angle = (2 * M_PI * time * freq) / index->size();
+      sum = sum + index->at(time) * std::exp(std::complex<T>(0, -angle));
     }
     result.push_back(sum);
   }

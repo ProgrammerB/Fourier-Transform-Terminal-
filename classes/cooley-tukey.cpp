@@ -90,7 +90,7 @@ for (int i = 0; i < total_time / 2; i++)
 		// DFT portion of FFT - calculates after everything has been split up through FFT_REC
 		for (int frequency = 0; frequency < total_time / 2; frequency += this->frequency_step)
 		{
-			std::complex<T> t = exp(std::complex<T>(0, -2 * M_PI * frequency / total_time)) * odd.at(frequency);
+			std::complex<T> t = exp(std::complex<T>(0, (-2 * M_PI * frequency) / total_time)) * odd.at(frequency);
 
 			//Result of Cooley-Tukey algorithm:
 				//*This gives us the frequency values at certain times
